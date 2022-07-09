@@ -1,0 +1,29 @@
+[
+  {
+    "type": "sandals",
+    "name": "Superfit toe",
+    "picture": "https://img01.ztat.net/article/spp-media-p1/a7ef4c245a083d5db2a2ac3f1669100d/af0648cd68f8472aa8fed72e6fb060a2.jpg?imwidth=303&filter=packshot",
+    "price": 20,
+    "color": "blue",
+    "quantity": 1,
+    "premiumDelivery": true
+  },
+  {
+    "name": "LEGO WEAR",
+    "type": "Hat",
+    "picture": "https://img01.ztat.net/article/spp-media-p1/00496cb257c14862a757057ed5831c2a/158846a7e99a4393a075bf8a32792e84.jpg?imwidth=1800&filter=packshot",
+    "price": 5,
+    "color": "orange",
+    "quantity": 1,
+    "premiumDelivery": false
+  },
+  {
+    "name": "Jack Wolfshirt",
+    "type": "t-shirt",
+    "picture": "https://img01.ztat.net/article/spp-media-p1/09a264c87e874590bcf163724213e3ad/3b382407a21b4628abd6944e16233775.jpg?imwidth=1800&filter=packshot",
+    "price": 10,
+    "color": "white",
+    "quantity": 2,
+    "premiumDelivery": true
+  }
+]
