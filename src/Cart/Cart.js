@@ -5,7 +5,12 @@ import { CartItem } from "./CartItem/CartItem";
 import mastercardLogo from "./../images/Mastercard_logo.svg";
 import visaLogo from "./../images/Visa_logo.svg";
 
-export const Cart = ({ items, updateItemQuantity, removeSelectedItem }) => {
+export const Cart = ({
+  items,
+  updateItemQuantity,
+  removeSelectedItem,
+  addNewItem,
+}) => {
   const articlesQuantity = amountArticles(items);
 
   const getDeliveryTime = () => {
@@ -34,7 +39,9 @@ export const Cart = ({ items, updateItemQuantity, removeSelectedItem }) => {
               />
             );
           })}
-          <button className="new-item">Add new Item</button>
+          <button className="new-item" onClick={addNewItem}>
+            Add new Item
+          </button>
         </ul>
 
         <p className="article-infos">
