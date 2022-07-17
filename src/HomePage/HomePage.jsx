@@ -12,15 +12,12 @@ function HomePage({
 }) {
   return (
     <div className="home-page" id="home">
-      <Header
-        shoppingCart={shoppingCart}
-        filterByIdentity={filterByIdentity}
-        handleSearchSubmit={handleSearchSubmit}
-      />
+      <Header shoppingCart={shoppingCart} filterByIdentity={filterByIdentity} />
       <Body
         filteredItems={filteredItems}
         addItemToCart={addToCart}
         shoppingCart={shoppingCart}
+        handleSearchSubmit={handleSearchSubmit}
       />
     </div>
   );

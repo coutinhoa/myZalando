@@ -8,9 +8,9 @@ import Login from "./Login/Login";
 //with this refractor the info is accessible to both siblings
 
 export const App = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
 
   useEffect(() => {
     fetch("/data.json")
@@ -55,11 +55,17 @@ export const App = () => {
   };
 
   const handleSearchSubmit = (specification) => {
-    const searchedItems = items.filter(
-      (element) =>
-        element.color === specification || element.name === specification
-    );
-    setFilteredItems(searchedItems);
+    if (specification === "") {
+      console.log("i am empty");
+      setFilteredItems(items);
+    } else {
+      const searchedItems = items.filter(
+        (element) =>
+          element.color.toLowerCase() === specification ||
+          element.name.toLowerCase() === specification
+      );
+      setFilteredItems(searchedItems);
+    }
   };
 
   // set up cart so it has all the elements zou want, set Shopping Cart as the fullz readz cart, setState only updates when the next render is executed
