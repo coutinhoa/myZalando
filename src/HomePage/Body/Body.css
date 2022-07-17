@@ -1,0 +1,73 @@
+.body {
+  background-color: white;
+}
+
+.items-container {
+  background-color: #d2451e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.text-container {
+  margin-left: 200px;
+  margin-top: 80px;
+  font-family: sans-serif;
+}
+
+.sales-text {
+  font-size: large;
+}
+
+.clothes {
+  padding-top: 50px;
+  padding-right: 50px;
+  height: 300px;
+  width: 400px;
+}
+
+.items-list {
+  padding-top: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+}
+
+.scroll-down:link {
+  text-decoration: none;
+  color: white;
+}
+
+.scroll-down:visited {
+  color: white;
+}
+
+.clothing-list {
+  color: black;
+}
+
+.clothing {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.z-logo {
+  height: 30px;
+  width: 100px;
+  padding-top: 30px;
+}
+
+.each-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+  padding-top: 30px;
+}

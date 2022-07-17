@@ -24,8 +24,12 @@ export const CartItem = ({ item, updateQuantity, removeItemFromList }) => {
           <div>Type: {item.type}</div>
           <div>Color: {item.color}</div>
           <div>
-            <span className="plus-logo">PLUS</span>
-            {item.premiumDelivery ? <span>Premium-Lieferung</span> : null}
+            {item.premiumDelivery ? (
+              <>
+                <span className="plus-logo">PLUS</span>
+                <span>Premium-Lieferung</span>
+              </>
+            ) : null}
             {/*or {item.premiumDelivery && <div>Premium-Lieferung</div>} */}
           </div>
           <button className="bin-button" onClick={handleRemoveItem}>

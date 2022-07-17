@@ -1,16 +1,12 @@
 import React from "react";
 import "./Cart.css";
-import { amountArticles } from "./utils/amountArticles";
+import { amountArticles } from "../utils/amountArticles";
 import { CartItem } from "./CartItem/CartItem";
 import mastercardLogo from "./../images/Mastercard_logo.svg";
 import visaLogo from "./../images/Visa_logo.svg";
+import { Link } from "react-router-dom";
 
-export const Cart = ({
-  items,
-  updateItemQuantity,
-  removeSelectedItem,
-  addNewItem,
-}) => {
+export const Cart = ({ items, updateQuantity, removeItemFromList }) => {
   const articlesQuantity = amountArticles(items);
 
   const getDeliveryTime = () => {
@@ -34,14 +30,29 @@ export const Cart = ({
               <CartItem
                 key={item.name}
                 item={item}
-                updateQuantity={updateItemQuantity}
-                removeItemFromList={removeSelectedItem}
+                updateQuantity={updateQuantity}
+                removeItemFromList={removeItemFromList}
               />
             );
           })}
-          <button className="new-item" onClick={addNewItem}>
-            Add new Item
-          </button>
+          <Link
+            className="continue_shopping"
+            to={`/`}
+            style={{
+              textDecoration: "none",
+              color: "black",
+              backgroundColor: "orangered",
+              fontWeight: "bold",
+              justifyContent: "center",
+              paddingTop: "10px",
+              paddingBottom: "10px",
+              paddingRight: "10px",
+              paddingLeft: "10px",
+              cursor: "pointer",
+            }}
+          >
+            Continue Shopping
+          </Link>
         </ul>
 
         <p className="article-infos">

@@ -33,7 +33,9 @@ export const PriceInfo = ({ items }) => {
       </div>
       <div className="border_two">
         <select className="coupon_container">
-          <option value="Gutschein hinzufügen (optional)">Gutschein hinzufügen (optional)</option>
+          <option value="Gutschein hinzufügen (optional)">
+            Gutschein hinzufügen (optional)
+          </option>
         </select>
       </div>
     </div>

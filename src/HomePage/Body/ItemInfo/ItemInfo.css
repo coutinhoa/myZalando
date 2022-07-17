@@ -1,0 +1,39 @@
+.item-info {
+  border-style: solid;
+  border-color: transparent;
+  width: 300px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.item-image {
+  height: 400px;
+  width: 300px;
+  margin-bottom: 0px;
+}
+
+.infos-container {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.infos {
+  padding-bottom: 5px;
+}
+
+.cart-button {
+  border-style: solid;
+  border-color: lightgrey;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  background-color: white;
+  cursor: pointer;
+}
+
+.green-background {
+  border-color: lightgreen;
+  background-color: lightgreen;
+}
