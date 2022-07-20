@@ -5,6 +5,7 @@
   margin-right: 20px;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  position: relative;
 }
 .item-image {
   height: 400px;
@@ -20,6 +21,15 @@
 }
 
 .infos {
+  padding-bottom: 5px;
+}
+
+.infos-link:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.infos-price {
   padding-bottom: 5px;
 }
 

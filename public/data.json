@@ -8,7 +8,18 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 1, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 2,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 3, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 4, "rating": 5, "description": "Amazing", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 2,
@@ -19,7 +30,22 @@
     "color": "Blue",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Kid"
+    "identity": "Kid",
+    "reviews": [
+      { "id": 5, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 6,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      {
+        "id": 7,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "26.09.2021"
+      }
+    ]
   },
   {
     "id": 3,
@@ -28,9 +54,38 @@
     "picture": "https://img01.ztat.net/article/spp-media-p1/09a264c87e874590bcf163724213e3ad/3b382407a21b4628abd6944e16233775.jpg?imwidth=1800&filter=packshot",
     "price": 10,
     "color": "Green",
-    "quantity": 1,
+    "quantity": 2,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 8, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 9,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 10, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 11,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 12,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 13, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 14,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 4,
@@ -41,7 +96,10 @@
     "color": "Strips",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 15, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 5,
@@ -50,9 +108,46 @@
     "picture": "https://img01.ztat.net/article/spp-media-p1/d55d46c9880d401d9b865d9ef9def409/1fff129d7d404f468b87f94f869c9b1c.jpg?imwidth=1800&filter=packshot",
     "price": 53.5,
     "color": "Camel",
-    "quantity": 1,
+    "quantity": "1",
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 16,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 17,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.10.2021"
+      },
+      { "id": 18, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 19,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 20,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 21, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 22, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 23,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 24, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 25, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 6,
@@ -63,7 +158,18 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 26, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 27,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 28, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 29, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 7,
@@ -74,7 +180,16 @@
     "color": "Orange",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 30, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 31,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
   },
   {
     "id": 8,
@@ -85,7 +200,10 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 32, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 9,
@@ -96,7 +214,17 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 33, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 34,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 35, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
   },
   {
     "id": 10,
@@ -107,7 +235,24 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 36, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 37,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.10.2021"
+      },
+      { "id": 38, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 39, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 40,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
   },
   {
     "id": 11,
@@ -118,7 +263,11 @@
     "color": "Blue",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 41, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      { "id": 42, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 12,
@@ -129,7 +278,18 @@
     "color": "green",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 43, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      { "id": 44, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 45, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 46,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
 
   {
@@ -141,7 +301,57 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 47, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 48,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 49, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 50,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 51,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 52, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      {
+        "id": 53,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 54,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 55, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 10,
+        "rating": 3.5,
+        "description": "Good",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 56,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 57, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      { "id": 58, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 14,
@@ -152,7 +362,22 @@
     "color": "Blue",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 59, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 60,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      {
+        "id": 61,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
 
   {
@@ -164,7 +389,18 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Kid"
+    "identity": "Kid",
+    "reviews": [
+      { "id": 62, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 63,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 64, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 65, "rating": 2, "description": "Bad", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 16,
@@ -175,7 +411,25 @@
     "color": "Denim",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Kid"
+    "identity": "Kid",
+    "reviews": [
+      { "id": 66, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      { "id": 67, "rating": 4, "description": "Good", "date": "10.10.2021" },
+      { "id": 68, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 69,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 70,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 71, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
   },
   {
     "id": 17,
@@ -186,7 +440,28 @@
     "color": "blue",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 72,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 73,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 74, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      {
+        "id": 75,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 18,
@@ -197,7 +472,15 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 76,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 19,
@@ -208,7 +491,41 @@
     "color": "Pink",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Kid"
+    "identity": "Kid",
+    "reviews": [
+      {
+        "id": 77,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 78,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 79, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 80,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 81,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 82, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 83,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
 
   {
@@ -220,7 +537,22 @@
     "color": "Pink",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 84,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 85,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 86, "rating": 4, "description": "Good", "date": "26.09.2021" }
+    ]
   },
   {
     "id": 21,
@@ -231,7 +563,18 @@
     "color": "Green",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 87, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 88,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 89, "rating": 2, "description": "Bad", "date": "26.09.2021" },
+      { "id": 90, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 22,
@@ -242,7 +585,16 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 91, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 92,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      }
+    ]
   },
   {
     "id": 23,
@@ -253,7 +605,49 @@
     "color": "Black",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 93,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 94,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 95, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 96,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 97,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 98, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 99,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      { "id": 100, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 101, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 102,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 24,
@@ -264,7 +658,28 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 103,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 103,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 105, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 106,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 25,
@@ -275,7 +690,42 @@
     "color": "Grey",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 107, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 108,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 109, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 110,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 111,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 112, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 113,
+        "rating": 1,
+        "description": "Very Bad",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 114,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      }
+    ]
   },
   {
     "id": 26,
@@ -286,7 +736,22 @@
     "color": "Brown",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      {
+        "id": 115,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      { "id": 116, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      {
+        "id": 117,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "26.09.2021"
+      }
+    ]
   },
 
   {
@@ -298,7 +763,23 @@
     "color": "Green",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      { "id": 118, "rating": 4, "description": "Good", "date": "10.09.2021" },
+      {
+        "id": 119,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 120, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 121,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   },
   {
     "id": 28,
@@ -309,7 +790,22 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": false,
-    "identity": "Man"
+    "identity": "Man",
+    "reviews": [
+      {
+        "id": 122,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.09.2021"
+      },
+      {
+        "id": 123,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.10.2021"
+      },
+      { "id": 124, "rating": 4, "description": "Good", "date": "10.09.2021" }
+    ]
   },
   {
     "id": 29,
@@ -320,6 +816,30 @@
     "color": "White",
     "quantity": 1,
     "premiumDelivery": true,
-    "identity": "Woman"
+    "identity": "Woman",
+    "reviews": [
+      { "id": 125, "rating": 2, "description": "Bad", "date": "10.09.2021" },
+      {
+        "id": 126,
+        "rating": 3,
+        "description": "Could be better",
+        "date": "10.10.2021"
+      },
+      { "id": 127, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 128,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      },
+      { "id": 129, "rating": 2, "description": "Bad", "date": "10.10.2021" },
+      { "id": 130, "rating": 4, "description": "Good", "date": "26.09.2021" },
+      {
+        "id": 131,
+        "rating": 5,
+        "description": "Amazing",
+        "date": "10.09.2021"
+      }
+    ]
   }
 ]

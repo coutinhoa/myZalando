@@ -12,5 +12,7 @@
   color: darkgrey;
 }
 .App {
-  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  flex-shrink: 0;
 }

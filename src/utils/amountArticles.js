@@ -3,6 +3,8 @@ export const amountArticles = (articles) => {
     return 0;
   }
 
+  //console.log(articles);
+
   let result = parseFloat(articles[0].quantity);
 
   for (let i = 1; i < articles.length; i++) {

@@ -112,7 +112,7 @@ function Login() {
         </ul>
         <div className="logo-container">
           <Link to={`/`}>
-            <img src={zalando} className="logo-triangle" />
+            <img src={zalando} className="logo-triangle" alt="zal-logo" />
           </Link>
         </div>
       </footer>

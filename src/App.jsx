@@ -4,6 +4,7 @@ import HomePage from "./HomePage/HomePage";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import "./App.css";
 import Login from "./Login/Login";
+import ItemPage from "../src/ItemPage/ItemPage";
 
 //with this refractor the info is accessible to both siblings
 
@@ -13,7 +14,7 @@ export const App = () => {
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
 
   useEffect(() => {
-    fetch("/data.json")
+    fetch("http://localhost:3000/clothes")
       .then((response) => response.json())
       .then((response) => {
         setItems(response);
@@ -62,11 +63,15 @@ export const App = () => {
       const searchedItems = items.filter(
         (element) =>
           element.color.toLowerCase() === specification ||
-          element.name.toLowerCase() === specification
+          element.name.toLowerCase() === specification ||
+          element.type.toLowerCase() === specification
       );
+
       setFilteredItems(searchedItems);
     }
   };
+
+  //console.log(filteredItems);
 
   // set up cart so it has all the elements zou want, set Shopping Cart as the fullz readz cart, setState only updates when the next render is executed
   // if itemAdded starts at false, whats the value of added, setItemAdded(true); const added = itemAdded; //its false until the next render, so onlz after we leave the current function does the value get updated
@@ -106,7 +111,17 @@ export const App = () => {
               />
             }
           />
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path={"item-details/:id"}
+            element={
+              <ItemPage
+                shoppingCart={shoppingCart}
+                filterByIdentity={filterByIdentity}
+                handleSearchSubmit={handleSearchSubmit}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
