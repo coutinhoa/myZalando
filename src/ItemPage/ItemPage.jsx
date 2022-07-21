@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./ItemPage.css";
 import { Header } from "../HomePage/Header/Header";
 import { useParams } from "react-router-dom";
@@ -15,16 +15,16 @@ export const ItemPage = ({
   const params = useParams();
   const [item, setItem] = useState();
 
+  //ratings is children of garment
   useEffect(() => {
-    fetch(`http://localhost:3000/clothes/${params.id}`)
+    fetch(`http://localhost:3000/garments/${params.id}?_embed=reviews`)
       .then((response) => response.json())
       .then((response) => setItem(response));
   }, []);
 
-  //console.log(item);
-
   function getAverageRating(item) {
     let sum = 0;
+    //console.log(item.reviews);
     for (let i = 0; i < item.reviews.length; i++) {
       sum += item.reviews[i].rating;
     }

@@ -14,7 +14,7 @@ export const App = () => {
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
 
   useEffect(() => {
-    fetch("http://localhost:3000/clothes")
+    fetch("http://localhost:3000/garments")
       .then((response) => response.json())
       .then((response) => {
         setItems(response);
