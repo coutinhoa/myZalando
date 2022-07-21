@@ -1,20 +1,21 @@
 .item-ratings-body {
   display: flex;
-  margin-left: 70px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 
 .item-photo {
   width: 400px;
-  height: 400px;
+  height: 500px;
+  padding-top: 15px;
 }
 
 .body-container {
-  margin-left: 100px;
-  margin-right: 70px;
+  margin-left: 150px;
   width: 100%;
 }
 
-.infos-container {
+.detailed-infos {
   font-size: xx-large;
   font-weight: bold;
   padding-bottom: 5px;
@@ -29,6 +30,24 @@
   font-size: medium;
 }
 
+.my-rating {
+  padding-top: 10px;
+}
+
+.my-rating:hover {
+  cursor: pointer;
+}
+
+.star-padding {
+  padding-right: 10px;
+  color: orange;
+  border-color: orange;
+}
+
+.bi bi-star-fill {
+  font-size: 25px;
+}
+
 .rating-container {
   margin-top: 30px;
   margin-bottom: 20px;
@@ -41,28 +60,32 @@
 
 .rating-resume {
   padding-top: 10px;
-  padding-left: 30%;
 }
 
 .heading {
-  font-size: 25px;
-  margin-right: 25px;
+  font-size: 20px;
+  padding-left: 25%;
+  font-weight: bold;
 }
 
-.star-padding {
-  padding-right: 10px;
+.rating-and-stars {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
-.bi bi-star {
-  font-size: 25px;
+.average-review {
+  font-size: 17px;
 }
 
-.checked {
-  color: orange;
-}
 .horizontal-line {
   border-style: solid;
   border-color: rgba(128, 128, 128, 0.174);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .rating-distribution {
@@ -107,29 +130,27 @@
 }
 
 .bar-5 {
-  width: 60%;
-  height: 18px;
-  background-color: #04aa6d;
-}
-.bar-4 {
-  width: 30%;
   height: 18px;
   background-color: #2196f3;
 }
-.bar-3 {
-  width: 10%;
+
+.bar-4 {
   height: 18px;
   background-color: #00bcd4;
 }
-.bar-2 {
-  width: 4%;
+
+.bar-3 {
   height: 18px;
-  background-color: #ff9800;
+  background-color: #8ee66b;
+}
+
+.bar-2 {
+  height: 18px;
+  background-color: #ff9900ac;
 }
 .bar-1 {
-  width: 15%;
   height: 18px;
-  background-color: #f44336;
+  background-color: #f44336c5;
 }
 
 /* Responsive layout - make the columns stack on top of each other instead of next to each other */

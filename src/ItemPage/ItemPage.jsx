@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ItemPage.css";
 import { Header } from "../HomePage/Header/Header";
 import { useParams } from "react-router-dom";
@@ -13,7 +13,7 @@ export const ItemPage = ({
 }) => {
   //console.log(articlesQuantity);
   const params = useParams();
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState();
 
   useEffect(() => {
     fetch(`http://localhost:3000/clothes/${params.id}`)
@@ -21,17 +21,101 @@ export const ItemPage = ({
       .then((response) => setItem(response));
   }, []);
 
-  /*const data = item.find((element) => element.id > 0).reviews;
+  //console.log(item);
 
-  const quantityArray = data.map((element) => element.rating);
+  function getAverageRating(item) {
+    let sum = 0;
+    for (let i = 0; i < item.reviews.length; i++) {
+      sum += item.reviews[i].rating;
+    }
+    return (sum / item.reviews.length).toFixed(1);
+  }
+  //console.log(getAverageRating(item));
 
-  const initialValue = 0;
-  const totalQuantity = quantityArray.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    initialValue
-  );
+  if (item === undefined) {
+    //or(!item) this one  also verifies for null
+    return <div>Loading...</div>;
+  }
 
-  console.log(totalQuantity);*/
+  function occurencesArray(item) {
+    const count = {};
+    for (let i = 0; i < item.reviews.length; i++) {
+      const element = item.reviews[i].rating;
+
+      if (count[element]) {
+        count[element] += 1;
+      } else {
+        count[element] = 1;
+      }
+    }
+    return count;
+  }
+  //console.log(occurencesArray(item));
+
+  function value(element) {
+    let result = 0;
+    for (let i = 0; i < item.reviews.length; i++) {
+      result = occurencesArray(item)[element];
+      if (result === undefined) {
+        result = 0;
+      } else {
+        result = result;
+      }
+    }
+    //console.log(occurencesArray(item)[element]);
+    return result;
+  }
+  //console.log(value(item, 5));
+
+  function ratingWidth(rating) {
+    const selectedRatings = item.reviews.filter(
+      (review) => review.rating === rating
+    );
+    //console.log(selectedRatings);
+    //console.log((selectedRatings.length / item.reviews.length) * 100);
+    return (selectedRatings.length / item.reviews.length) * 100;
+  }
+
+  const renderStars = () => {
+    //checks if current star should be filled or not
+    const average = Math.floor(getAverageRating(item));
+
+    //this return creates and array with 5 items and it's gonna go to each element and return a new element with a star
+    //string templates are used when we need to put conditions on strings
+    return (
+      <>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <span className="star-padding">
+            <i className={`bi bi-star${i <= average ? "-fill" : ""}`}></i>
+          </span>
+        ))}
+      </>
+    );
+
+    /*this return creates a new array with average number of elements and it's gonna go to each element and return 
+    a new element with a star. the problem with this return is that it only shows the stars equal to the average
+    return (
+      <>
+        {[...Array(average)].map(() => (
+          <span className="star-padding">
+            <i className="bi bi-star-fill"></i>
+          </span>
+        ))}
+      </>
+    );*/
+  };
+
+  const myRating = () => {
+    return (
+      <>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <span className="star-padding">
+            <i className={`bi bi-star`}></i>
+          </span>
+        ))}
+      </>
+    );
+  };
 
   return (
     <div>
@@ -49,7 +133,7 @@ export const ItemPage = ({
         </div>
         <div className="body-container">
           <div className="item-infos-container">
-            <div className="infos-container">
+            <div className="detailed-infos">
               {item.name} {item.type} - {item.color}
             </div>
             <div className="price-container">{item.price}$</div>
@@ -61,26 +145,21 @@ export const ItemPage = ({
                 </>
               ) : null}
             </div>
+            <div className="my-rating" onmouseover={myRating()}>
+              {myRating()}
+            </div>
           </div>
           <div className="rating-container">
             <div className="rating-resume">
-              <span className="heading">User Rating</span>
-              <span className="star-padding">
-                <i className="bi bi-star"></i>
+              <span className="heading">
+                Kundenbewertungen ({item.reviews.length}){" "}
               </span>
-              <span className="star-padding">
-                <i className="bi bi-star"></i>
-              </span>
-              <span className="star-padding">
-                <i className="bi bi-star"></i>
-              </span>
-              <span className="star-padding">
-                <i className="bi bi-star"></i>
-              </span>
-              <span className="star-padding">
-                <i className="bi bi-star"></i>
-              </span>
-              <p>y average based on x reviews.</p>
+              <div className="rating-and-stars">
+                <div className="average-review">
+                  {getAverageRating(item)}/5 Stars
+                </div>
+                <div className="stars-average">{renderStars()}</div>
+              </div>
             </div>
             <div className="horizontal-line"></div>
             <div className="rating-distribution">
@@ -91,11 +170,16 @@ export const ItemPage = ({
                   </div>
                   <div className="bar">
                     <div className="bar-container">
-                      <div className="bar-5"></div>
+                      <div
+                        className="bar-5"
+                        style={{
+                          width: `${ratingWidth(5)}%`,
+                        }}
+                      ></div>
                     </div>
                   </div>
                   <div className="reviewers">
-                    <div>150</div>
+                    <div>{value(5)}</div>
                   </div>
                 </div>
                 <div>
@@ -104,11 +188,14 @@ export const ItemPage = ({
                   </div>
                   <div className="bar">
                     <div className="bar-container">
-                      <div className="bar-4"></div>
+                      <div
+                        className="bar-4"
+                        style={{ width: `${ratingWidth(4)}%` }}
+                      ></div>
                     </div>
                   </div>
                   <div className="reviewers">
-                    <div>63</div>
+                    <div>{value(4)}</div>
                   </div>
                 </div>
                 <div>
@@ -117,11 +204,14 @@ export const ItemPage = ({
                   </div>
                   <div className="bar">
                     <div className="bar-container">
-                      <div className="bar-3"></div>
+                      <div
+                        className="bar-3"
+                        style={{ width: `${ratingWidth(3)}%` }}
+                      ></div>
                     </div>
                   </div>
                   <div className="reviewers">
-                    <div>15</div>
+                    <div>{value(3)}</div>
                   </div>
                 </div>
                 <div>
@@ -130,11 +220,14 @@ export const ItemPage = ({
                   </div>
                   <div className="bar">
                     <div className="bar-container">
-                      <div className="bar-2"></div>
+                      <div
+                        className="bar-2"
+                        style={{ width: `${ratingWidth(2)}%` }}
+                      ></div>
                     </div>
                   </div>
                   <div className="reviewers">
-                    <div>6</div>
+                    <div>{value(2)}</div>
                   </div>
                 </div>
                 <div>
@@ -143,11 +236,14 @@ export const ItemPage = ({
                   </div>
                   <div className="bar">
                     <div className="bar-container">
-                      <div className="bar-1"></div>
+                      <div
+                        className="bar-1"
+                        style={{ width: `${ratingWidth(1)}%` }}
+                      ></div>
                     </div>
                   </div>
                   <div className="reviewers">
-                    <div>20</div>
+                    <div>{value(1)}</div>
                   </div>
                 </div>
               </div>

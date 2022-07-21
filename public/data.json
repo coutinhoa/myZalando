@@ -339,7 +339,7 @@
       { "id": 55, "rating": 4, "description": "Good", "date": "26.09.2021" },
       {
         "id": 10,
-        "rating": 3.5,
+        "rating": 3,
         "description": "Good",
         "date": "10.09.2021"
       },
