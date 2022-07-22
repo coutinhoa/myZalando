@@ -163,24 +163,38 @@ export const Rating = ({
           {" "}
           {item.reviews.length} Kundenbewertungen
         </div>
-        <div className="ratings-container">
-          <div>
-            <span className="letters-format">User: </span>
-            {item.reviews.id}
-          </div>
-          <div>
-            <span className="letters-format">Review Date: </span>
-            {item.reviews.date}
-          </div>
-        </div>
-        <div>
-          <span className="letters-format">Rating: </span>
-          {item.reviews.rating} out of 5 stars
-        </div>
         <div>
           {" "}
-          <span className="letters-format">Description: </span>
-          {item.reviews.description}
+          {item.reviews.map((review) => {
+            return (
+              <>
+                <div className="review-container">
+                  <div
+                    className="user-date-container"
+                    key={item.reviews.id}
+                    review={review}
+                  >
+                    <div>
+                      <span className="letters-format">User: </span>
+                      {review.id}
+                    </div>
+                    <div>
+                      <span className="letters-format">Review Date: </span>
+                      {review.date}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="letters-format">Rating: </span>
+                    {review.rating} out of 5 stars
+                  </div>
+                  <div>
+                    <span className="letters-format">Description: </span>
+                    {review.description}
+                  </div>
+                </div>
+              </>
+            );
+          })}
         </div>
       </div>
       <div className="ratings-details-line"></div>

@@ -225,12 +225,23 @@
   font-weight: bold;
   display: flex;
   justify-content: center;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(128, 128, 128, 0.174);
+  border-bottom-width: 2px;
+  padding-bottom: 10px;
 }
 
-.ratings-container {
+.user-date-container {
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
+}
+
+.review-container {
+  border-bottom-style: solid;
+  border-bottom-color: rgba(128, 128, 128, 0.174);
+  border-bottom-width: 2px;
+  padding-bottom: 10px;
 }
 
 .letters-format {
