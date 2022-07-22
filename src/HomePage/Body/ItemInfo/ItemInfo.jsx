@@ -1,11 +1,8 @@
 import React from "react";
 import "./ItemInfo.css";
 import { Link } from "react-router-dom";
-//import { amountArticles } from "./../../../utils/amountArticles";
 
 export const ItemInfo = ({ element, addItemToCart, shoppingCart }) => {
-  // const articlesQuantity = amountArticles(shoppingCart);
-
   const isItemInTheCart = (item) => {
     return shoppingCart.includes(item);
   };

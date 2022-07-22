@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ItemPage.css";
 import { Header } from "../HomePage/Header/Header";
+import { Rating } from "../ItemPage/Rating/Rating";
 import { useParams } from "react-router-dom";
 
 export const ItemPage = ({
@@ -105,17 +106,15 @@ export const ItemPage = ({
     );*/
   };
 
-  const myRating = () => {
-    return (
-      <>
-        {[1, 2, 3, 4, 5].map((i) => (
-          <span className="star-padding">
-            <i className={`bi bi-star`}></i>
-          </span>
-        ))}
-      </>
-    );
-  };
+  console.log(item.reviews[0]);
+  function getRatings(item) {
+    let rating = [];
+    for (let i = 0; i < item.reviews.length; i++) {
+      rating.push(item.reviews[i].rating);
+    }
+    return rating;
+  }
+  //console.log(getRatings(item));
 
   return (
     <div>
@@ -127,129 +126,14 @@ export const ItemPage = ({
           articlesQuantity={articlesQuantity}
         />
       </div>
-      <div className="item-ratings-body">
-        <div className="image-container">
-          <img src={item.picture} className="item-photo" alt="item" />
-        </div>
-        <div className="body-container">
-          <div className="item-infos-container">
-            <div className="detailed-infos">
-              {item.name} {item.type} - {item.color}
-            </div>
-            <div className="price-container">{item.price}$</div>
-            <div className="plus">
-              {item.premiumDelivery ? (
-                <>
-                  <span className="plus-logo">PLUS</span>
-                  <span>Premium-Lieferung</span>
-                </>
-              ) : null}
-            </div>
-            <div className="my-rating" onmouseover={myRating()}>
-              {myRating()}
-            </div>
-          </div>
-          <div className="rating-container">
-            <div className="rating-resume">
-              <span className="heading">
-                Kundenbewertungen ({item.reviews.length}){" "}
-              </span>
-              <div className="rating-and-stars">
-                <div className="average-review">
-                  {getAverageRating(item)}/5 Stars
-                </div>
-                <div className="stars-average">{renderStars()}</div>
-              </div>
-            </div>
-            <div className="horizontal-line"></div>
-            <div className="rating-distribution">
-              <div className="row">
-                <div>
-                  <div className="stars">
-                    <div>5 Stars</div>
-                  </div>
-                  <div className="bar">
-                    <div className="bar-container">
-                      <div
-                        className="bar-5"
-                        style={{
-                          width: `${ratingWidth(5)}%`,
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="reviewers">
-                    <div>{value(5)}</div>
-                  </div>
-                </div>
-                <div>
-                  <div className="stars">
-                    <div>4 Stars</div>
-                  </div>
-                  <div className="bar">
-                    <div className="bar-container">
-                      <div
-                        className="bar-4"
-                        style={{ width: `${ratingWidth(4)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="reviewers">
-                    <div>{value(4)}</div>
-                  </div>
-                </div>
-                <div>
-                  <div className="stars">
-                    <div>3 Stars</div>
-                  </div>
-                  <div className="bar">
-                    <div className="bar-container">
-                      <div
-                        className="bar-3"
-                        style={{ width: `${ratingWidth(3)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="reviewers">
-                    <div>{value(3)}</div>
-                  </div>
-                </div>
-                <div>
-                  <div className="stars">
-                    <div>2 Stars</div>
-                  </div>
-                  <div className="bar">
-                    <div className="bar-container">
-                      <div
-                        className="bar-2"
-                        style={{ width: `${ratingWidth(2)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="reviewers">
-                    <div>{value(2)}</div>
-                  </div>
-                </div>
-                <div>
-                  <div className="stars">
-                    <div>1 Star</div>
-                  </div>
-                  <div className="bar">
-                    <div className="bar-container">
-                      <div
-                        className="bar-1"
-                        style={{ width: `${ratingWidth(1)}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className="reviewers">
-                    <div>{value(1)}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <Rating
+          item={item}
+          renderStars={renderStars}
+          getAverageRating={getAverageRating}
+          ratingWidth={ratingWidth}
+          value={value}
+        />
       </div>
     </div>
   );

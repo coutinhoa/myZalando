@@ -16,3 +16,27 @@
   margin-right: auto;
   flex-shrink: 0;
 }
+
+.footer-container {
+  background-color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px;
+  justify-content: space-evenly;
+}
+
+.logo-container {
+  justify-self: center;
+  padding-top: 5px;
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.logo-triangle {
+  height: 30px;
+  width: 30px;
+}

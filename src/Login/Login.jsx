@@ -103,7 +103,7 @@ function Login() {
             <button className="register">Registrieren</button>
           </div>
         </div>
-      </section>
+      </section>{" "}
       <footer>
         <ul className="footer">
           <li>Datenschutz</li>

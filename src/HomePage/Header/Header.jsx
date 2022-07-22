@@ -56,9 +56,17 @@ export const Header = ({
             KINDER
           </button>
         </p>
-        <p>
+        <Link
+          className="back-home"
+          to={`/`}
+          style={{
+            textDecoration: "none",
+            color: "black",
+            cursor: "pointer",
+          }}
+        >
           <img src={zalandoLogo} className="logo" alt="logo" />
-        </p>
+        </Link>
         <p className="icons-container">
           <span className="icons">
             De <i className="bi bi-globe"></i>
