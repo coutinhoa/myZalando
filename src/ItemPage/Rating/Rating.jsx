@@ -1,15 +1,150 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 
-export const Rating = ({
-  item,
-  renderStars,
-  getAverageRating,
-  ratingWidth,
-  value,
-}) => {
+export const Rating = ({ item, fetchItem }) => {
+  function getAverageRating(item) {
+    let sum = 0;
+    for (let i = 0; i < item.reviews.length; i++) {
+      sum += item.reviews[i].rating;
+    }
+    //console.log("sum: " + sum);
+    return (sum / item.reviews.length).toFixed(1);
+  }
+
+  if (item === undefined) {
+    //or(!item) this one  also verifies for null
+    return <div>Loading...</div>;
+  }
+  console.log(getAverageRating(item)); //on the 1st render the props are undefined so item is too
+  //we need to show the console.log after the if
+
+  function occurencesArray(item) {
+    const count = {};
+    for (let i = 0; i < item.reviews.length; i++) {
+      const element = item.reviews[i].rating;
+
+      if (count[element]) {
+        count[element] += 1;
+      } else {
+        count[element] = 1;
+      }
+    }
+    return count;
+  }
+  //console.log(occurencesArray(item));
+
+  function value(element) {
+    let result = 0;
+    for (let i = 0; i < item.reviews.length; i++) {
+      result = occurencesArray(item)[element];
+      if (result === undefined) {
+        result = 0;
+      } else {
+        result = result;
+      }
+    }
+    //console.log(occurencesArray(item)[element]);
+    return result;
+  }
+  //console.log(value(item, 5));
+
+  function ratingWidth(rating) {
+    const selectedRatings = item.reviews.filter(
+      (review) => review.rating === rating
+    );
+    //console.log(selectedRatings);
+    //console.log((selectedRatings.length / item.reviews.length) * 100);
+    return (selectedRatings.length / item.reviews.length) * 100;
+  }
+
+  const renderStars = () => {
+    //checks if current star should be filled or not
+    const average = Math.floor(getAverageRating(item));
+
+    //this return creates and array with 5 items and it's gonna go to each element and return a new element with a star
+    //string templates are used when we need to put conditions on strings
+    return (
+      <>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <span className="star-padding">
+            <i className={`bi bi-star${i <= average ? "-fill" : ""}`}></i>
+          </span>
+        ))}
+      </>
+    );
+
+    /*this return creates a new array with average number of elements and it's gonna go to each element and return 
+    a new element with a star. the problem with this return is that it only shows the stars equal to the average
+    return (
+      <>
+        {[...Array(average)].map(() => (
+          <span className="star-padding">
+            <i className="bi bi-star-fill"></i>
+          </span>
+        ))}
+      </>
+    );*/
+  };
+
+  const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
+  const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
+
+  const onChangeDescription = (event) => {
+    const description = event.target.value;
+    setReviewDescription(description);
+    //this functions saves the value of the new variable
+  };
+
+  //button prinst the value on the console, but is the input that modifies the variable
+  //this fucntion prints the new description
+  //when we submit the form we need to call the submitReview function and we are using a form so that we only submit when all the requirements(rating and description) are filled
+  const submitReview = (event) => {
+    //console.log(reviewDescription); // this log shows the description only when we click the submit
+    //console.log(new Date());
+    //console.log(reviewRating);
+    event.preventDefault();
+
+    fetch(`http://localhost:3000/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        rating: reviewRating,
+        description: reviewDescription,
+        date: new Date().toLocaleDateString(),
+        garmentId: item.id,
+      }),
+    }).then(() => {
+      //we are setting the rating and review to their initial state so that we
+      //can clear the input after submitting a form
+      setReviewRating();
+      setReviewDescription(""); // this is setting the reviewDescription as an emtpy string,
+      // the inout needs the attribute value to be reviewDescription
+      //cause without the attribute value(on the input) the input can't clear it
+      //now with the value the input is controlled
+      fetchItem();
+    });
+  };
+
+  //used if we click on the stars
+  const giveRating = (number) => {
+    console.log(typeof number);
+    console.log(number);
+    setReviewRating(number);
+  };
+
+  //change image
+  //const [changeImage, setChangeImage] = useState(item.pictures[0]);
+
+  //onHover is an event craete a function for the onHover
+  // const function onHover = ()=>{
+  //fazer um map
+
+  //}
+
   return (
     <div>
       <div className="item-ratings-body">
@@ -200,46 +335,130 @@ export const Rating = ({
       <div className="ratings-details-line"></div>
       <div className="ratings-details-line"></div>
       <div className="opinion-container" id="opinion-form">
-        <form>
+        <div>
           <div className="infos-title">Give us your opinion</div>
           <div>
             <div className="user-opinion">
-              <div>
-                <span className="letters-format">Rating: </span>
-                <span className="star-fill">
-                  <i className="bi bi-star-fill"></i>{" "}
-                </span>
-                <span className="star-fill">
-                  <i className="bi bi-star-fill"></i>{" "}
-                </span>
-                <span className="star-fill">
-                  <i className="bi bi-star-fill"></i>{" "}
-                </span>
-                <span className="star-fill">
-                  <i className="bi bi-star-fill"></i>{" "}
-                </span>
-                <span className="star-fill">
-                  <i className="bi bi-star-fill"></i>
-                </span>
-              </div>
-              <div className="input-format">
+              <form onSubmit={submitReview}>
                 <div>
-                  Your Opinion:
-                  <input
-                    className="input-opinion"
-                    type="text"
-                    maxlength="30"
-                    required
-                  ></input>
+                  <span className="letters-format">Rating: </span>
+                  <span className="star-fill">
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={1}
+                        className="radio-input"
+                        onChange={(event) =>
+                          giveRating(parseInt(event.target.value))
+                        }
+                        required
+                      />
+                      <i
+                        className={`bi ${
+                          reviewRating >= 1 ? "bi-star-fill" : "bi-star"
+                        }`}
+                      />
+                    </label>
+                  </span>
+                  <span className="star-fill">
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={2}
+                        className="radio-input"
+                        onChange={(event) =>
+                          giveRating(parseInt(event.target.value))
+                        }
+                        required
+                      />
+                      <i
+                        className={`bi ${
+                          reviewRating >= 2 ? "bi-star-fill" : "bi-star"
+                        }`}
+                      />
+                    </label>
+                  </span>
+                  <span className="star-fill">
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={3}
+                        className="radio-input"
+                        onChange={(event) =>
+                          giveRating(parseInt(event.target.value))
+                        }
+                        required
+                      />
+                      <i
+                        className={`bi ${
+                          reviewRating >= 3 ? "bi-star-fill" : "bi-star"
+                        }`}
+                      />
+                    </label>
+                  </span>
+                  <span className="star-fill">
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={4}
+                        className="radio-input"
+                        onChange={(event) =>
+                          giveRating(parseInt(event.target.value))
+                        }
+                        required
+                      />
+                      <i
+                        className={`bi ${
+                          reviewRating >= 4 ? "bi-star-fill" : "bi-star"
+                        }`}
+                      />
+                    </label>
+                  </span>
+                  <span className="star-fill">
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={5}
+                        className="radio-input"
+                        onChange={(event) =>
+                          giveRating(parseInt(event.target.value))
+                        }
+                        required
+                      />
+                      <i
+                        className={`bi ${
+                          reviewRating === 5 ? "bi-star-fill" : "bi-star"
+                        }`}
+                      />
+                    </label>
+                  </span>
                 </div>
-              </div>
-              <button className="opinion-button" type="submit">
-                {" "}
-                Submit my opinion
-              </button>
+                <div className="input-format">
+                  <div>
+                    Your Opinion:
+                    <input
+                      className="input-opinion"
+                      type="text"
+                      maxLength={30}
+                      minLength={7}
+                      onChange={onChangeDescription}
+                      value={reviewDescription}
+                      required
+                    ></input>
+                  </div>
+                </div>
+                <button className="opinion-button" type="submit">
+                  Submit my opinion
+                </button>
+              </form>
             </div>
           </div>
-        </form>
+        </div>
       </div>{" "}
       <footer>
         <ul className="footer">
@@ -256,5 +475,18 @@ export const Rating = ({
     </div>
   );
 };
+
+//onClick={giveRating(1)} se for chamado assim corre imediatament qd a page faz load em vez de ser so qd se clica
+//required only works with <form>
+
+//used if we click on the stars, but we gonna click on the input that requires an onChange
+/*<i
+  className={`bi ${
+                        reviewRating >= 1 ? "bi-star-fill" : "bi-star"
+                      }`}
+                      onClick={() => giveRating(1)}
+                    />*/
+
+//on input when using the onChange we also gotta pass the value as a prop VIP to make the input controlled
 
 export default Rating;

@@ -22,6 +22,19 @@ export const App = () => {
       });
   }, []);
 
+  const fetchClothes = () => {
+    fetch("http://localhost:3000/garments")
+      .then((response) => response.json())
+      .then((response) => {
+        setItems(response);
+        setFilteredItems(response);
+      });
+  };
+
+  useEffect(() => {
+    fetchClothes();
+  }, []);
+
   const updateQuantity = (item, quantity) => {
     const newQuantity = {
       ...item,

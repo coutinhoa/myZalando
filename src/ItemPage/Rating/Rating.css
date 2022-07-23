@@ -264,8 +264,14 @@
 .star-fill {
   color: orange;
   border-color: orange;
-  padding-right: 5px;
+  cursor: pointer;
 }
+
+.radio-input {
+  opacity: 0;
+  margin: 0;
+}
+/* parent has to be relative and the star absolute*/
 
 .input-format {
   font-weight: bold;

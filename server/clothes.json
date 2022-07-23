@@ -930,6 +930,13 @@
       "description": "Amazing",
       "date": "10.09.2021",
       "garmentId": 29
+    },
+    {
+      "rating": 5,
+      "description": "Super comfortable",
+      "date": "23.7.2022",
+      "garmentId": 29,
+      "id": 132
     }
   ],
   "garments": [
@@ -1065,7 +1072,6 @@
       "premiumDelivery": false,
       "identity": "Man"
     },
-
     {
       "id": 13,
       "type": "Sandals",
@@ -1088,7 +1094,6 @@
       "premiumDelivery": true,
       "identity": "Woman"
     },
-
     {
       "id": 15,
       "type": "T-shirt",
@@ -1144,7 +1149,6 @@
       "premiumDelivery": true,
       "identity": "Kid"
     },
-
     {
       "id": 20,
       "type": "Trainers",
@@ -1222,7 +1226,6 @@
       "premiumDelivery": false,
       "identity": "Woman"
     },
-
     {
       "id": 27,
       "type": "Jacket",
