@@ -5,7 +5,7 @@ import zalandoLogo from "../../images/Zalando_logo.svg";
 import { ItemInfo } from "./ItemInfo/ItemInfo";
 import { amountArticles } from "../../utils/amountArticles";
 
-export const Body = ({ addItemToCart, shoppingCart, filteredItems }) => {
+export const Body = ({ shoppingCart, filteredItems }) => {
   const articlesQuantity = amountArticles(shoppingCart);
 
   return (
@@ -45,7 +45,6 @@ export const Body = ({ addItemToCart, shoppingCart, filteredItems }) => {
               return (
                 <ItemInfo
                   element={element}
-                  addItemToCart={addItemToCart}
                   shoppingCart={shoppingCart}
                   articlesQuantity={articlesQuantity}
                 />

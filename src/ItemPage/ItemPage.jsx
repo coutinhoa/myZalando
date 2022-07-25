@@ -9,8 +9,9 @@ export const ItemPage = ({
   filterByIdentity,
   handleSearchSubmit,
   articlesQuantity,
+  updatedItemSize,
+  addToCart,
 }) => {
-  //console.log(articlesQuantity);
   const params = useParams();
   const [item, setItem] = useState();
 
@@ -38,7 +39,13 @@ export const ItemPage = ({
         />
       </div>
       <div>
-        <Rating item={item} fetchItem={fetchItem} />
+        <Rating
+          item={item}
+          fetchItem={fetchItem}
+          updatedItemSize={updatedItemSize}
+          addItemToCart={addToCart}
+          shoppingCart={shoppingCart}
+        />
       </div>
     </div>
   );

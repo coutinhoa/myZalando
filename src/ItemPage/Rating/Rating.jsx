@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 
-export const Rating = ({ item, fetchItem }) => {
+export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
   function getAverageRating(item) {
     let sum = 0;
     for (let i = 0; i < item.reviews.length; i++) {
@@ -17,7 +17,7 @@ export const Rating = ({ item, fetchItem }) => {
     //or(!item) this one  also verifies for null
     return <div>Loading...</div>;
   }
-  console.log(getAverageRating(item)); //on the 1st render the props are undefined so item is too
+  //console.log(getAverageRating(item)); //on the 1st render the props are undefined so item is too
   //we need to show the console.log after the if
 
   function occurencesArray(item) {
@@ -131,45 +131,98 @@ export const Rating = ({ item, fetchItem }) => {
 
   //used if we click on the stars
   const giveRating = (number) => {
-    console.log(typeof number);
-    console.log(number);
+    //console.log(typeof number);
+    //console.log(number);
     setReviewRating(number);
   };
 
-  //change image
-  //const [changeImage, setChangeImage] = useState(item.pictures[0]);
+  const [changeImage, setChangeImage] = useState(item.pictures[0]);
+  const handleMouseOver = (event) => {
+    event.preventDefault();
+    const pictureChange = event.currentTarget.src;
+    item.pictures.map((element) => {
+      return element === pictureChange;
+    });
+    setChangeImage(pictureChange);
+  };
 
-  //onHover is an event craete a function for the onHover
-  // const function onHover = ()=>{
-  //fazer um map
+  /* not working
+  const [selectedItem, setSelectedItem] = useState([]);
+  const updateItemSize = (item, size) => {
+    const itemSizeUpdated = { ...item, size: size };
 
-  //}
+    const updatedSizeItem = selectedItem.map((previousElement) => {
+      return previousElement === item ? newSize : previousElement;
+    });
+
+    setSelectedItem(updatedSizeItem);
+  };*/
+
+  const availableSizes = ["XS", "S", "M", "L", "XL"];
+
+  //same as above but with PATCH
+
+  const updatedItemSize = (item, size) => {
+    const itemSizeUpdated = { size: size };
+
+    fetch(`http://localhost:3000/garments/${item.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(itemSizeUpdated),
+    }).then(() => fetchItem());
+  };
+
+  const handleChangeSize = (event) => {
+    updatedItemSize(item, event.target.value);
+  };
+
+  const isItemInTheCart = (item) => {
+    return shoppingCart.includes(item);
+  };
 
   return (
     <div>
       <div className="item-ratings-body">
         <div className="images-container">
           <div>
-            {/*the feature of changing images is only available for item 1 and 2 */}
             <div>
-              <img src={item.picture} className="small-photo" alt="item" />
+              <img
+                src={item.pictures[0]}
+                className="small-photo"
+                alt="first"
+                onMouseOver={handleMouseOver}
+              />
             </div>
             <div>
-              <img src={item.picture} className="small-photo" alt="item" />
+              <img
+                src={item.pictures[1]}
+                className="small-photo"
+                alt="second"
+                onMouseOver={handleMouseOver}
+              />
             </div>
             <div>
-              <img src={item.picture} className="small-photo" alt="item" />
+              <img
+                src={item.pictures[2]}
+                className="small-photo"
+                alt="third"
+                onMouseOver={handleMouseOver}
+              />
             </div>
           </div>
           <div className="image-container">
-            <img src={item.picture} className="item-photo" alt="item" />
+            <img src={changeImage} className="item-photo" alt="item" />
           </div>
         </div>
-
         <div className="body-container">
           <div className="item-infos-container">
             <div className="detailed-infos">
-              {item.name} {item.type} - {item.color}
+              {item.name} {item.type}
+            </div>
+            <div className="color">
+              Farbe: <span className="color-bold">{item.color}</span>
             </div>
             <div className="price-container">{item.price.toFixed(2)}$</div>
             <div className="plus">
@@ -181,6 +234,35 @@ export const Rating = ({ item, fetchItem }) => {
               ) : null}
             </div>
             <div className="stars-average">{renderStars()}</div>
+            <div className="size-cart-container">
+              <div>
+                <select
+                  className="select-size-container"
+                  onChange={handleChangeSize}
+                  value={item.size}
+                >
+                  <option value="" disabled selected hidden>
+                    Bitte Größe wählen
+                  </option>
+                  {availableSizes.map((i) => (
+                    <option key={i}>{i}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="add-to-cart-container">
+                <div
+                  className={`add-to-cart-button ${
+                    isItemInTheCart(item) ? "green-background" : ""
+                  }`}
+                  onClick={() => addItemToCart(item)}
+                >
+                  In den Warenkorb
+                </div>
+                <div className="wishlist-symbol">
+                  <i className="bi bi-heart"></i>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="rating-container">
             <div className="rating-resume">

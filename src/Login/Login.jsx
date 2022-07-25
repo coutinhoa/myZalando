@@ -93,7 +93,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <div className="line"></div>
+      <div className="h-line"></div>
       <section className="new">
         <div>
           <div>

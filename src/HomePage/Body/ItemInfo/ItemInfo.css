@@ -32,18 +32,3 @@
 .infos-price {
   padding-bottom: 5px;
 }
-
-.cart-button {
-  border-style: solid;
-  border-color: lightgrey;
-  width: 40px;
-  height: 40px;
-  justify-content: center;
-  background-color: white;
-  cursor: pointer;
-}
-
-.green-background {
-  border-color: lightgreen;
-  background-color: lightgreen;
-}

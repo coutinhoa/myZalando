@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import zalando from "../images/Zalando.png";
 
 function HomePage({
-  addToCart,
   shoppingCart,
   filterByIdentity,
   filteredItems,
@@ -21,7 +20,6 @@ function HomePage({
       />
       <Body
         filteredItems={filteredItems}
-        addItemToCart={addToCart}
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
       />

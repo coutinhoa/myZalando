@@ -1,6 +1,7 @@
 .image {
   width: 150px;
   height: 150px;
+  cursor: pointer;
 }
 
 .info-container {
@@ -17,11 +18,27 @@
 .item-quantity {
   font-size: small;
   width: 300px;
-  padding: 40px;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  padding-left: 40px;
 }
 
 .item-details {
   text-align: left;
+}
+
+.item-infos-in-cart {
+  margin-top: 5px;
+}
+
+.cart-size-container {
+  margin-top: 5px;
+  display: flex;
+}
+
+.cart-size-select {
+  margin-left: 5px;
+  width: 30%;
 }
 
 .item-quantity {
@@ -37,7 +54,8 @@
 }
 
 .price {
-  padding-top: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .plus-logo {

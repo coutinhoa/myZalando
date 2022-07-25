@@ -106,7 +106,6 @@ export const App = () => {
             path="/"
             element={
               <HomePage
-                addToCart={addToCart}
                 shoppingCart={shoppingCart}
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
@@ -132,6 +131,7 @@ export const App = () => {
                 shoppingCart={shoppingCart}
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
+                addToCart={addToCart}
               />
             }
           />
