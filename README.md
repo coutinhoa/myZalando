@@ -43,7 +43,7 @@ npm start
 
 ```sh
 cd server
-json-server .\expenses.json
+json-server .\clothes.json
 ```
 
 3. Access the application through the browser at http://localhost:3006.
