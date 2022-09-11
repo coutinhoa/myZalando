@@ -28,6 +28,7 @@ export const Header = ({
     console.log(text);
     setSearchTerm(text);
 
+    //here we want to clear when it's empty
     if (text === "") {
       handleSearchSubmit(text);
     }

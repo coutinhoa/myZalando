@@ -1,50 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./CartItem.css";
 import binLogo from "../../images/Bin_logo.png";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
-export const CartItem = ({ item, updateQuantity, removeItemFromList }) => {
+export const CartItem = ({ item, addToCart, removeItemFromList }) => {
   const availableOptions = [1, 2, 3, 4, 5];
 
   const handleChangeQuantity = (e) => {
-    updateQuantity(item, e.target.value);
+    addToCart(item, e.target.value);
   };
 
   const handleRemoveItem = () => {
     removeItemFromList(item);
-  };
-
-  //update size not working!!!! need to learn context API!!!!!!!!!
-  const params = useParams();
-  const [cartItem, setCartItem] = useState();
-
-  //ratings is children of garment
-  const fetchCartItem = () => {
-    fetch(`http://localhost:3000/garments/${params.id}?_embed=reviews`)
-      .then((response) => response.json())
-      .then((response) => setCartItem(response));
-  };
-
-  useEffect(() => {
-    fetchCartItem();
-  }, []);
-  const availableSizes = ["XS", "S", "M", "L", "XL"];
-
-  const updatedItemSize = (item, size) => {
-    const itemSizeUpdated = { size: size };
-
-    fetch(`http://localhost:3000/garments/${item.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(itemSizeUpdated),
-    }).then(() => fetchCartItem());
-  };
-
-  const handleChangeSize = (event) => {
-    updatedItemSize(cartItem, event.target.value);
   };
 
   return (
@@ -70,15 +37,8 @@ export const CartItem = ({ item, updateQuantity, removeItemFromList }) => {
           </div>
           <div className="cart-size-container">
             <div>Size:</div>
-            <select
-              className="cart-size-select"
-              onChange={handleChangeSize}
-              value={item.size}
-            >
-              <option value="" disabled selected hidden>
-                Bitte Größe wählen
-              </option>
-              {availableSizes.map((i) => (
+            <select className="cart-size-select" value={item.size}>
+              {item.sizes.map((i) => (
                 <option key={i}>{i}</option>
               ))}
             </select>

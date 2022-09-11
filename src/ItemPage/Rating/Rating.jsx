@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Rating.css";
 import zalando from "../../images/Zalando.png";
+import { getAverageRating } from "./utils/getAverageRating";
 
-export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
-  function getAverageRating(item) {
-    let sum = 0;
-    for (let i = 0; i < item.reviews.length; i++) {
-      sum += item.reviews[i].rating;
+export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
+  const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
+  const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
+  const [changeImage, setChangeImage] = useState("");
+
+  useEffect(() => {
+    //called when the component renders the 1st time and whenever item changes
+    if (item) {
+      setChangeImage(item.pictures[0]);
     }
-    //console.log("sum: " + sum);
-    return (sum / item.reviews.length).toFixed(1);
-  }
+  }, [item]);
 
   if (item === undefined) {
     //or(!item) this one  also verifies for null
     return <div>Loading...</div>;
   }
-  //console.log(getAverageRating(item)); //on the 1st render the props are undefined so item is too
-  //we need to show the console.log after the if
 
   function occurencesArray(item) {
     const count = {};
@@ -39,13 +40,10 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
     let result = 0;
     for (let i = 0; i < item.reviews.length; i++) {
       result = occurencesArray(item)[element];
-      if (result === undefined) {
+      if (!result) {
         result = 0;
-      } else {
-        result = result;
       }
     }
-    //console.log(occurencesArray(item)[element]);
     return result;
   }
   //console.log(value(item, 5));
@@ -54,42 +52,26 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
     const selectedRatings = item.reviews.filter(
       (review) => review.rating === rating
     );
-    //console.log(selectedRatings);
-    //console.log((selectedRatings.length / item.reviews.length) * 100);
+
     return (selectedRatings.length / item.reviews.length) * 100;
   }
 
   const renderStars = () => {
     //checks if current star should be filled or not
-    const average = Math.floor(getAverageRating(item));
+    const average = Math.floor(getAverageRating(item.reviews));
 
     //this return creates and array with 5 items and it's gonna go to each element and return a new element with a star
     //string templates are used when we need to put conditions on strings
     return (
       <>
         {[1, 2, 3, 4, 5].map((i) => (
-          <span className="star-padding">
+          <span className="star-padding" key={i}>
             <i className={`bi bi-star${i <= average ? "-fill" : ""}`}></i>
           </span>
         ))}
       </>
     );
-
-    /*this return creates a new array with average number of elements and it's gonna go to each element and return 
-    a new element with a star. the problem with this return is that it only shows the stars equal to the average
-    return (
-      <>
-        {[...Array(average)].map(() => (
-          <span className="star-padding">
-            <i className="bi bi-star-fill"></i>
-          </span>
-        ))}
-      </>
-    );*/
   };
-
-  const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
-  const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
 
   const onChangeDescription = (event) => {
     const description = event.target.value;
@@ -131,51 +113,13 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
 
   //used if we click on the stars
   const giveRating = (number) => {
-    //console.log(typeof number);
-    //console.log(number);
     setReviewRating(number);
   };
 
-  const [changeImage, setChangeImage] = useState(item.pictures[0]);
   const handleMouseOver = (event) => {
     event.preventDefault();
     const pictureChange = event.currentTarget.src;
-    item.pictures.map((element) => {
-      return element === pictureChange;
-    });
     setChangeImage(pictureChange);
-  };
-
-  /* not working
-  const [selectedItem, setSelectedItem] = useState([]);
-  const updateItemSize = (item, size) => {
-    const itemSizeUpdated = { ...item, size: size };
-
-    const updatedSizeItem = selectedItem.map((previousElement) => {
-      return previousElement === item ? newSize : previousElement;
-    });
-
-    setSelectedItem(updatedSizeItem);
-  };*/
-
-  const availableSizes = ["XS", "S", "M", "L", "XL"];
-
-  //same as above but with PATCH
-
-  const updatedItemSize = (item, size) => {
-    const itemSizeUpdated = { size: size };
-
-    fetch(`http://localhost:3000/garments/${item.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(itemSizeUpdated),
-    }).then(() => fetchItem());
-  };
-
-  const handleChangeSize = (event) => {
-    updatedItemSize(item, event.target.value);
   };
 
   const isItemInTheCart = (item) => {
@@ -235,16 +179,12 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
             </div>
             <div className="stars-average">{renderStars()}</div>
             <div className="size-cart-container">
-              <div>
-                <select
-                  className="select-size-container"
-                  onChange={handleChangeSize}
-                  value={item.size}
-                >
-                  <option value="" disabled selected hidden>
+              <div className="border-select-size">
+                <select className="select-size-container" defaultValue={""}>
+                  <option value="" disabled hidden>
                     Bitte Größe wählen
                   </option>
-                  {availableSizes.map((i) => (
+                  {item.sizes.map((i) => (
                     <option key={i}>{i}</option>
                   ))}
                 </select>
@@ -254,7 +194,7 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
                   className={`add-to-cart-button ${
                     isItemInTheCart(item) ? "green-background" : ""
                   }`}
-                  onClick={() => addItemToCart(item)}
+                  onClick={() => addToCart(item)}
                 >
                   In den Warenkorb
                 </div>
@@ -271,7 +211,7 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
               </span>
               <div className="rating-and-stars">
                 <div className="average-review">
-                  {getAverageRating(item)} out of 5 Stars
+                  {getAverageRating(item.reviews)} out of 5 Stars
                 </div>
                 <div className="stars-average">{renderStars()}</div>
               </div>
@@ -381,35 +321,28 @@ export const Rating = ({ item, fetchItem, addItemToCart, shoppingCart }) => {
           {item.reviews.length} Kundenbewertungen
         </div>
         <div>
-          {" "}
           {item.reviews.map((review) => {
             return (
-              <>
-                <div className="review-container">
-                  <div
-                    className="user-date-container"
-                    key={item.reviews.id}
-                    review={review}
-                  >
-                    <div>
-                      <span className="letters-format">User: </span>
-                      {review.id}
-                    </div>
-                    <div>
-                      <span className="letters-format">Review Date: </span>
-                      {review.date}
-                    </div>
+              <div key={review.id} className="review-container">
+                <div className="user-date-container" review={review}>
+                  <div>
+                    <span className="letters-format">User: </span>
+                    {review.id}
                   </div>
                   <div>
-                    <span className="letters-format">Rating: </span>
-                    {review.rating} out of 5 stars
-                  </div>
-                  <div>
-                    <span className="letters-format">Description: </span>
-                    {review.description}
+                    <span className="letters-format">Review Date: </span>
+                    {review.date}
                   </div>
                 </div>
-              </>
+                <div>
+                  <span className="letters-format">Rating: </span>
+                  {review.rating} out of 5 stars
+                </div>
+                <div>
+                  <span className="letters-format">Description: </span>
+                  {review.description}
+                </div>
+              </div>
             );
           })}
         </div>
