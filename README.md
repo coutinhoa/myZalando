@@ -4,7 +4,10 @@ Built a Zalando clone using React, Javascript and json server
 
 ![zalando_home_page](https://user-images.githubusercontent.com/104270514/188320172-c281c498-a306-4f1a-8d90-db91a4701576.jpg)
 
+![zalando_clothes_homepage](https://user-images.githubusercontent.com/104270514/189997218-0d00e6d3-4972-4dfc-9c28-4fd6d6f664e4.jpg)
+
 ![zalando_details_page](https://user-images.githubusercontent.com/104270514/188320571-0fd32583-7b43-4970-9ff4-810d2e0d9f01.jpg)
+
 ![zalando_details_page_rating](https://user-images.githubusercontent.com/104270514/188320574-32cabc62-d062-4437-b59f-87678509b83a.jpg)
 
 ![zalando_login_page](https://user-images.githubusercontent.com/104270514/188320175-3672021c-f62c-4cf2-949e-2b8d78b6a8c7.jpg)
