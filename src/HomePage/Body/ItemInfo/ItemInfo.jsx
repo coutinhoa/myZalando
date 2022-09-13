@@ -6,7 +6,7 @@ export const ItemInfo = ({ element }) => {
   return (
     <div className="item-info" key={element.id} item={element}>
       <Link className="item-image" to={`/item-details/${element.id}`}>
-        <img src={element.pictures[0]} className="item-image" alt="item" />
+        <img src={element.pictures[0].url} className="item-image" alt="item" />
       </Link>
       <div className="infos-container">
         <div>
@@ -19,7 +19,7 @@ export const ItemInfo = ({ element }) => {
                 color: "black",
               }}
             >
-              {element.name} {element.type} - {element.color}
+              {element.name} {element.type} - {element.colour}
             </Link>
           </div>
           <div className="infos-price">{element.price.toFixed(2)}$</div>

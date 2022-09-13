@@ -12,7 +12,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
   useEffect(() => {
     //called when the component renders the 1st time and whenever item changes
     if (item) {
-      setChangeImage(item.pictures[0]);
+      setChangeImage(item.pictures[0].url);
     }
   }, [item]);
 
@@ -133,7 +133,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
           <div>
             <div>
               <img
-                src={item.pictures[0]}
+                src={item.pictures[0].url}
                 className="small-photo"
                 alt="first"
                 onMouseOver={handleMouseOver}
@@ -141,7 +141,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
             </div>
             <div>
               <img
-                src={item.pictures[1]}
+                src={item.pictures[1].url}
                 className="small-photo"
                 alt="second"
                 onMouseOver={handleMouseOver}
@@ -149,7 +149,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
             </div>
             <div>
               <img
-                src={item.pictures[2]}
+                src={item.pictures[2].url}
                 className="small-photo"
                 alt="third"
                 onMouseOver={handleMouseOver}
@@ -166,7 +166,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
               {item.name} {item.type}
             </div>
             <div className="color">
-              Farbe: <span className="color-bold">{item.color}</span>
+              Farbe: <span className="color-bold">{item.colour}</span>
             </div>
             <div className="price-container">{item.price.toFixed(2)}$</div>
             <div className="plus">

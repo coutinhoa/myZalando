@@ -15,8 +15,9 @@ export const ItemPage = ({
   const [item, setItem] = useState();
 
   //ratings is children of garment
+  //if json: fetch(`http://localhost:3000/garments/${params.id}?_embed=reviews`)
   const fetchItem = useCallback(() => {
-    fetch(`http://localhost:3000/garments/${params.id}?_embed=reviews`)
+    fetch(`http://localhost:8000/api/garments/${params.id}`)
       .then((response) => response.json())
       .then((response) => setItem(response));
   }, [params.id]);
@@ -24,6 +25,9 @@ export const ItemPage = ({
   useEffect(() => {
     fetchItem();
   }, [fetchItem]);
+
+  console.log(item);
+  //console.log(item.name);
 
   return (
     <>
