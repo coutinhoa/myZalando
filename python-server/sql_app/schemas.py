@@ -3,7 +3,6 @@ from typing import Optional
 
 #reviews
 class RatingBase(BaseModel):
-    id: int
     rating : int
     description : str
     date : str

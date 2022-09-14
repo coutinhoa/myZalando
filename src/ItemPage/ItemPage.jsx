@@ -26,7 +26,7 @@ export const ItemPage = ({
     fetchItem();
   }, [fetchItem]);
 
-  console.log(item);
+  //console.log(item);
   //console.log(item.name);
 
   return (

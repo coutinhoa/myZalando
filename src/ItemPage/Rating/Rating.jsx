@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 import { getAverageRating } from "./utils/getAverageRating";
@@ -8,6 +8,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
   const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
   const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
   const [changeImage, setChangeImage] = useState("");
+  const params = useParams();
 
   useEffect(() => {
     //called when the component renders the 1st time and whenever item changes
@@ -79,7 +80,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
     //this functions saves the value of the new variable
   };
 
-  //button prinst the value on the console, but is the input that modifies the variable
+  //button prints the value on the console, but is the input that modifies the variable
   //this fucntion prints the new description
   //when we submit the form we need to call the submitReview function and we are using a form so that we only submit when all the requirements(rating and description) are filled
   const submitReview = (event) => {
@@ -88,7 +89,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
     //console.log(reviewRating);
     event.preventDefault();
 
-    fetch(`http://localhost:3000/reviews`, {
+    fetch(`http://localhost:8000/api/garments/${params.id}/reviews`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
