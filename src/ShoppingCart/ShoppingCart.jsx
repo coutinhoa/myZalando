@@ -4,7 +4,11 @@ import { Cart } from "../Cart/Cart";
 import { PriceInfo } from "../PriceInfo/PriceInfo";
 import zalandoLogo from "../images/Zalando_logo.svg";
 
-function ShoppingCart({ shoppingCart, addToCart, removeItemFromList }) {
+function ShoppingCart({
+  shoppingCart,
+  updateItemQuantity,
+  removeItemFromList,
+}) {
   return (
     <div className="ShoppingCart">
       <div className="logo-container">
@@ -15,7 +19,7 @@ function ShoppingCart({ shoppingCart, addToCart, removeItemFromList }) {
       <div className="separate-page">
         <Cart
           items={shoppingCart}
-          addToCart={addToCart}
+          updateItemQuantity={updateItemQuantity}
           removeItemFromList={removeItemFromList}
         />
         <PriceInfo items={shoppingCart} />

@@ -22,7 +22,6 @@ class Rating(RatingBase):
 
 #pictures
 class PicturesBase(BaseModel):
-    id: int
     url : str
 
 
@@ -38,6 +37,38 @@ class Pictures(PicturesBase):
         orm_mode = True
 
 
+#garment_size
+class GarmentSizeBase(BaseModel):
+    quantity : int
+
+
+class GarmentSizeCreate(GarmentSizeBase):
+    pass
+
+
+class GarmentSize(GarmentSizeBase):
+    id: int
+    garment_id: int
+    size_id: int
+
+    class Config:
+        orm_mode = True
+
+#sizes
+class SizeBase(BaseModel):
+    size : str
+
+
+class SizeCreate(SizeBase):
+    pass
+
+
+class Size(SizeBase):
+    id: int
+    class Config:
+        orm_mode = True
+
+
 #garments
 class GarmentBase(BaseModel):
     id: int
@@ -47,7 +78,6 @@ class GarmentBase(BaseModel):
     colour : str
     premiumdelivery : str
     identity : str
-    sizes : list[str]
 
 
 class GarmentCreate(GarmentBase):
@@ -60,8 +90,7 @@ class Garment(GarmentBase):
     id: int
     reviews: list[Rating]=[]
     pictures: list[Pictures]=[]
+    sizes: list[Size]=[]
 
     class Config:
         orm_mode = True
-
-

@@ -1314,3 +1314,25 @@ INSERT INTO reviews (rating, description, date, garment_id)
       
      
 SELECT * FROM pictures
+
+
+
+
+INSERT INTO sizes (sizes)
+VALUES ('XS'), ('S'), ('M'), ('L'), ('XL')
+
+SELECT * FROM sizes
+
+
+
+
+INSERT INTO garmentsizes ( garment_id, size_id, quantity)
+VALUES (1, 2, 4), (1, 1, 5), (2, 1, 2), (3, 2, 4), (3, 1, 4), (3, 3, 1), (4, 2, 4), (5, 1, 4), (5, 2, 4), (5, 3, 4), (5, 4, 4), (5, 5, 4), (6, 5, 2), (7, 1, 3), (8, 3, 1), (9, 3, 5), (10, 2, 4), (11, 5, 5), (12, 2, 4), (12, 4, 2),(13, 2, 4), (13, 1, 5), (14, 1, 2), (15, 2, 4), (16, 1, 4), (16, 3, 1), (17, 2, 4), (18, 1, 4), (19, 5, 1), (20, 3, 4), (21, 4, 4), (22, 5, 4), (23, 5, 1), (23, 1, 3), (24, 5, 4), (24, 4, 4), (24, 1, 2), (25, 2, 4), (26, 3, 4), (27, 2, 4),(27, 4, 4), (27, 1, 2), (28, 2, 4), (29, 3, 4), (29, 2, 4)
+
+SELECT * FROM garmentsizes
+
+
+
+
+select * from garments INNER
+JOIN pictures ON garments.id=pictures.garment_id  where garments.id=2

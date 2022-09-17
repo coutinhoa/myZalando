@@ -3,11 +3,12 @@ import "./CartItem.css";
 import binLogo from "../../images/Bin_logo.png";
 import { Link } from "react-router-dom";
 
-export const CartItem = ({ item, addToCart, removeItemFromList }) => {
+export const CartItem = ({ item, updateItemQuantity, removeItemFromList }) => {
   const availableOptions = [1, 2, 3, 4, 5];
 
   const handleChangeQuantity = (e) => {
-    addToCart(item, e.target.value);
+    console.log(e.target.value);
+    updateItemQuantity(item, e.target.value);
   };
 
   const handleRemoveItem = () => {
@@ -19,7 +20,7 @@ export const CartItem = ({ item, addToCart, removeItemFromList }) => {
       <div className="info-container">
         <div className="lines">
           <Link to={`/item-details/${item.id}`}>
-            <img src={item.pictures[0]} alt="item" className="image" />
+            <img src={item.pictures[0].url} alt="item" className="image" />
           </Link>
         </div>
         <div className="item-details">
@@ -38,9 +39,9 @@ export const CartItem = ({ item, addToCart, removeItemFromList }) => {
           <div className="cart-size-container">
             <div>Size:</div>
             <select className="cart-size-select" value={item.size}>
-              {item.sizes.map((i) => (
-                <option key={i}>{i}</option>
-              ))}
+              {item.sizes.map((i) => {
+                return <option key={i.id}>{i.size}</option>;
+              })}
             </select>
           </div>
         </div>

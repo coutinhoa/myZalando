@@ -9,7 +9,7 @@ export const ItemPage = ({
   filterByIdentity,
   handleSearchSubmit,
   articlesQuantity,
-  addToCart,
+  addItemToShoppingCart,
 }) => {
   const params = useParams();
   const [item, setItem] = useState();
@@ -40,7 +40,7 @@ export const ItemPage = ({
       <Rating
         item={item}
         fetchItem={fetchItem}
-        addToCart={addToCart}
+        addItemToShoppingCart={addItemToShoppingCart}
         shoppingCart={shoppingCart}
       />
     </>

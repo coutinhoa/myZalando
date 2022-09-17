@@ -4,7 +4,12 @@ import "./Rating.css";
 import zalando from "../../images/Zalando.png";
 import { getAverageRating } from "./utils/getAverageRating";
 
-export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
+export const Rating = ({
+  item,
+  fetchItem,
+  addItemToShoppingCart,
+  shoppingCart,
+}) => {
   const [reviewDescription, setReviewDescription] = useState(""); //reviewDescription is a read only variable
   const [reviewRating, setReviewRating] = useState(); //it contains the most current value the user selected
   const [changeImage, setChangeImage] = useState("");
@@ -185,9 +190,10 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
                   <option value="" disabled hidden>
                     Bitte Größe wählen
                   </option>
-                  {item.sizes.map((i) => (
-                    <option key={i}>{i}</option>
-                  ))}
+                  {item.sizes.map((i) => {
+                    /*console.log(i);*/
+                    return <option key={i.id}>{i.size}</option>;
+                  })}
                 </select>
               </div>
               <div className="add-to-cart-container">
@@ -195,7 +201,7 @@ export const Rating = ({ item, fetchItem, addToCart, shoppingCart }) => {
                   className={`add-to-cart-button ${
                     isItemInTheCart(item) ? "green-background" : ""
                   }`}
-                  onClick={() => addToCart(item)}
+                  onClick={() => addItemToShoppingCart(item)}
                 >
                   In den Warenkorb
                 </div>

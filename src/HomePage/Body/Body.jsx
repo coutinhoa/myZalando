@@ -44,6 +44,7 @@ export const Body = ({ shoppingCart, filteredItems }) => {
             (element) => {
               return (
                 <ItemInfo
+                  key={element.id}
                   element={element}
                   shoppingCart={shoppingCart}
                   articlesQuantity={articlesQuantity}

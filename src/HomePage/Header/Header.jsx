@@ -68,7 +68,7 @@ export const Header = ({
         >
           <img src={zalandoLogo} className="logo" alt="logo" />
         </Link>
-        <p className="icons-container">
+        <div className="icons-container">
           <span className="icons">
             De <i className="bi bi-globe"></i>
           </span>
@@ -102,7 +102,7 @@ export const Header = ({
                 Warenkorb ({articlesQuantity})
               </span>
             </div>
-            <div className="cart-hover">
+            {/*<div className="cart-hover">
               <div className="go-to-cart">
                 <p>DEIN WARENKORB IST LEER</p>
                 <p>
@@ -118,9 +118,9 @@ export const Header = ({
                   </a>
                 </div>
               </div>
-            </div>
+          </div>*/}
           </Link>
-        </p>
+        </div>
       </div>
       <div className="search-container">
         <input

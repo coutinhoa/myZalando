@@ -28,19 +28,27 @@ export const App = () => {
     fetchClothes();
   }, []);
 
-  const addToCart = (item) => {
-    let cart = [...shoppingCart];
+  let cart = [...shoppingCart];
+
+  const addItemToShoppingCart = (item) => {
+    const cartHasItem = shoppingCart.find((i) => i.id === item.id);
     cart.push({ ...item, quantity: 1 });
+    console.log(item.quantity);
+    if (cartHasItem) {
+      console.log("cart has item");
+      item.quantity = parseInt(item.quantity + 1);
+      console.log(item.quantity);
+    }
+    setShoppingCart(cart);
+  };
+
+  const updateItemQuantity = (item, event) => {
+    //select a quantity and save it in the shopping cart
+
     const hasItem = shoppingCart.find((i) => i.id === item.id);
     if (hasItem) {
       console.log("has item");
-      const updateQuantity = (item, quantity) => {
-        const newQuantity = {
-          ...item,
-          quantity: quantity,
-        };
-      };
-      updateQuantity(item, parseInt(item.quantity + 1));
+      addItemToShoppingCart(item, parseInt(item.quantity + event.target.value));
       console.log(item);
     }
     setShoppingCart(cart);
@@ -101,7 +109,7 @@ export const App = () => {
             element={
               <ShoppingCart
                 shoppingCart={shoppingCart}
-                addToCart={addToCart}
+                updateItemQuantity={updateItemQuantity}
                 removeItemFromList={removeItem}
               />
             }
@@ -114,7 +122,7 @@ export const App = () => {
                 shoppingCart={shoppingCart}
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
-                addToCart={addToCart}
+                addItemToShoppingCart={addItemToShoppingCart}
               />
             }
           />

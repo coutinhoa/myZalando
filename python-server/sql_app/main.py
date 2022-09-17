@@ -29,12 +29,7 @@ def get_db():
     finally:
         db.close()
 
-
-@app.get("/api/garments/{garment_id}/reviews", response_model=list[schemas.Rating])
-def read_ratings(garment_id: int, db: Session = Depends(get_db)):
-    print(garment_id)
-    return crud.get_reviews(db, garment_id=garment_id)
-
+# get 
 @app.get("/api/garments/", response_model=list[schemas.Garment])
 def read_garments( db: Session = Depends(get_db)):
     garments = crud.get_garments(db)
@@ -49,24 +44,26 @@ def read_garment(garment_id: int, db: Session = Depends(get_db)):
     return db_garment
 
 
-@app.get("/garments/{garment_id}/reviews", response_model=schemas.Rating)
-def read_reviews(garment_id: int, db: Session = Depends(get_db)):
-    db_reviews = crud.get_reviews(db, garment_id=garment_id)
-    if db_reviews is None:
-        raise HTTPException(status_code=404, detail="Garment not found")
-    return db_reviews
+@app.get("/api/garments/{garment_id}/reviews", response_model=list[schemas.Rating])
+def read_ratings(garment_id: int, db: Session = Depends(get_db)):
+    print(garment_id)
+    return crud.get_reviews(db, garment_id=garment_id)
 
 
-@app.get("/garments/{garment_id}/pictures", response_model=schemas.Pictures)
+@app.get("/api/garments/{garment_id}/pictures", response_model= list[schemas.Pictures])
 def read_pictures(garment_id: int, db: Session = Depends(get_db)):
-    db_reviews = crud.get_pictures(db, garment_id=garment_id)
-    if db_reviews is None:
-        raise HTTPException(status_code=404, detail="Garment not found")
-    return db_reviews
+    return crud.get_pictures(db, garment_id=garment_id)
+    
 
 
+@app.get("/api/garments/{garment_id}/garmentsizes", response_model=list[schemas.GarmentSize])
+def read_garment_sizes(garment_id: int, db: Session = Depends(get_db)):
+    return crud.get_garment_sizes(db, garment_id=garment_id)   
+
+
+
+#post review
 @app.post("/api/garments/{garment_id}/reviews")
 def create_rating_for_garment(garment_id: int, rating: schemas.RatingCreate, db: Session = Depends(get_db)):
     return crud.create_garment_rating(db=db, rating=rating, garment_id=garment_id)
 
-    

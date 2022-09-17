@@ -6,7 +6,7 @@ import mastercardLogo from "./../images/Mastercard_logo.svg";
 import visaLogo from "./../images/Visa_logo.svg";
 import { Link } from "react-router-dom";
 
-export const Cart = ({ items, addToCart, removeItemFromList }) => {
+export const Cart = ({ items, updateItemQuantity, removeItemFromList }) => {
   const articlesQuantity = amountArticles(items);
 
   const getDeliveryTime = () => {
@@ -30,7 +30,7 @@ export const Cart = ({ items, addToCart, removeItemFromList }) => {
               <CartItem
                 key={item.name}
                 item={item}
-                addToCart={addToCart}
+                updateItemQuantity={updateItemQuantity}
                 removeItemFromList={removeItemFromList}
               />
             );
