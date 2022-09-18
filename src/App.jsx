@@ -28,30 +28,33 @@ export const App = () => {
     fetchClothes();
   }, []);
 
-  let cart = [...shoppingCart];
-
+  /**
+   * Adds an item to the shopping cart.
+   * If the item already exists, increments the quantity of the item by 1.
+   * else adds to shopping cart.
+   * @param item
+   */
   const addItemToShoppingCart = (item) => {
-    const cartHasItem = shoppingCart.find((i) => i.id === item.id);
-    cart.push({ ...item, quantity: 1 });
-    console.log(item.quantity);
-    if (cartHasItem) {
-      console.log("cart has item");
-      item.quantity = parseInt(item.quantity + 1);
-      console.log(item.quantity);
+    const cartItem = shoppingCart.find((i) => i.id === item.id);
+
+    if (cartItem) {
+      cartItem.quantity = cartItem.quantity + 1;
+      const updatedCart = shoppingCart.map((i) =>
+        i.id === cartItem.id ? cartItem : i
+      );
+      setShoppingCart(updatedCart);
+    } else {
+      const newShoppingCartItem = { ...item, quantity: 1 };
+      setShoppingCart([...shoppingCart, newShoppingCartItem]);
     }
-    setShoppingCart(cart);
   };
 
   const updateItemQuantity = (item, event) => {
     //select a quantity and save it in the shopping cart
 
-    const hasItem = shoppingCart.find((i) => i.id === item.id);
-    if (hasItem) {
-      console.log("has item");
-      addItemToShoppingCart(item, parseInt(item.quantity + event.target.value));
-      console.log(item);
-    }
-    setShoppingCart(cart);
+    item.quantity = parseInt(item.quantity + event.target.value);
+    console.log(item);
+    //setShoppingCart(cart);
   };
 
   const filterByIdentity = (identity) => {

@@ -1,14 +1,15 @@
-export const amountArticles = (articles) => {
-  if (articles.length === 0) {
+export const amountArticles = (article) => {
+  if (article.length === 0) {
     return 0;
   }
 
-  //console.log(articles);
+  //console.log(article);
 
-  let result = parseFloat(articles[0].quantity);
+  let result = parseFloat(article[0].quantity);
 
-  for (let i = 1; i < articles.length; i++) {
-    result += parseFloat(articles[i].quantity);
+  for (let i = 1; i < article.length; i++) {
+    result += parseFloat(article[i].quantity);
   }
+  console.log(result);
   return result;
 };
