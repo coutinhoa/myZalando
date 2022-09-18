@@ -1,6 +1,6 @@
 # myZalando
 
-Built a Zalando clone using React, Javascript and json server
+Built a Zalando clone using React, Javascript and FastAPI
 
 ![zalando_home_page](https://user-images.githubusercontent.com/104270514/188320172-c281c498-a306-4f1a-8d90-db91a4701576.jpg)
 
