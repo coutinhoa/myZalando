@@ -1,6 +1,6 @@
 # myZalando
 
-Built a Zalando clone using React, Javascript and json server
+Built a Zalando clone using React, Javascript and FastAPI
 
 ![zalando_home_page](https://user-images.githubusercontent.com/104270514/188320172-c281c498-a306-4f1a-8d90-db91a4701576.jpg)
 
@@ -28,10 +28,12 @@ Built a Zalando clone using React, Javascript and json server
 git clone https://github.com/coutinhoa/myZalando.git
 ```
 
-2. Move to the project root directory and install json-server:
+2. Move to the project root directory and install the client and server packages:
 
 ```sh
-npm install json-server
+cd zalando/python-server
+pip install "fastapi[all]"
+pip install sqlalchemy
 ```
 
 ## Usage
@@ -45,8 +47,8 @@ npm start
 2. Run the json-server API in a new terminal window:
 
 ```sh
-cd server
-json-server .\clothes.json
+cd sql_app
+uvicorn main:app  --reload --host 0.0.0.0 --port 8000
 ```
 
 3. Access the application through the browser at http://localhost:3006.
