@@ -94,6 +94,7 @@ export const Rating = ({
     //console.log(reviewRating);
     event.preventDefault();
 
+    //python: fetch(`http://localhost:8000/api/garments/${params.id}/reviews`
     fetch(`http://localhost:8000/api/garments/${params.id}/reviews`, {
       method: "POST",
       headers: {

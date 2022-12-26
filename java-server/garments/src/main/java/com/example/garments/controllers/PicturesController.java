@@ -1,2 +1,4 @@
-package com.example.garments.controllers;public class PicturesController {
+package com.example.garments.controllers;
+
+public class PicturesController {
 }

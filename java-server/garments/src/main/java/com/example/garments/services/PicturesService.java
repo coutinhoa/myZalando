@@ -1,2 +1,4 @@
-package com.example.garments.services;public class PicturesService {
+package com.example.garments.services;
+
+public class PicturesService {
 }

@@ -11,11 +11,14 @@ export const App = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
 
+  //Insomnia example: http://127.0.0.1:8000/api/garments/1/reviews
+
   //clothes.json is running on Resources  http://localhost:3000/reviews and http://localhost:3000/garments
   //fetch("http://localhost:3000/garments")
   //fastAPI it's running on http://127.0.0.1:8000/api/garments
   //alchemy is the orm that maps database stuff
   const fetchClothes = () => {
+    //python: fetch("http://localhost:8000/api/garments")
     fetch("http://localhost:8000/api/garments")
       .then((response) => response.json())
       .then((response) => {

@@ -5,21 +5,6 @@ from database import Base
 from sqlalchemy.orm import relationship
 
 
-# class Garment(Base):
-#     __tablename__ = "garments"
-
-#     id = Column(Integer, primary_key=True, index=True)
-#     name = Column(String)
-#     type = Column(String)
-#     price = Column(Float)
-#     colour = Column(String)
-#     premiumdelivery = Column(Boolean)
-#     identity = Column(String)
-#     reviews = relationship("Rating", back_populates="garment")
-#     pictures = relationship("Pictures", back_populates="garment")
-#     sizes = relationship("GarmentSize", back_populates="garment")
-       
-
 class Rating(Base):
     __tablename__ = "reviews"
 
@@ -38,13 +23,6 @@ class Pictures(Base):
     garment_id = Column(Integer, ForeignKey("garments.id"))
     garment = relationship("Garment", back_populates="pictures")
 
-
-# class Size(Base):
-#     __tablename__ = "sizes"
-
-#     id = Column (Integer, primary_key=True, index=True)
-#     size = Column (String)
-#     garments = relationship("GarmentSize", back_populates="size")
 
 class GarmentSize(Base):
     __tablename__ = "garmentsizes"
@@ -73,15 +51,7 @@ class Size(Base):
     id = Column(Integer, primary_key=True)
     size = Column (String)
 
-# class GarmentSize(Base):
-#     __tablename__ = "garmentsizes"
 
-#     id = Column (Integer, primary_key=True, index=True)
-#     garment_id = Column(Integer, ForeignKey("garments.id"))
-#     size_id = Column(Integer, ForeignKey("sizes.id"))
-#     quantity = Column(Integer, nullable=False, default=1)
-#     garment = relationship("Garment", back_populates="sizes")
-#     size = relationship("Size", back_populates="garments")
    
 
 
