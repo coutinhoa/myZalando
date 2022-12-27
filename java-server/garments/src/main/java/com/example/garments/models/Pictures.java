@@ -37,15 +37,15 @@ public class Pictures {
         return this.url;
     }
 
-
+   // public Garment getGarment() {        return garments;    }
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public void setUrl(String url) {
         this.url = url;
     }
 
+   // public void setGarment(Garment garments) {        this.garments = garments;    }
 
 }

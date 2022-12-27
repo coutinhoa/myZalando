@@ -11,8 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-
-@CrossOrigin(origins = "http://localhost:3000", methods={RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin("*")
 @RestController
 class GarmentController {
 
@@ -22,7 +21,7 @@ class GarmentController {
     }
 
     @GetMapping("/garments")
-    List<Garment> all(@RequestParam (defaultValue="0") String page, @RequestParam(defaultValue = "10") String pagesize) {
+    List<Garment> all(@RequestParam (defaultValue="0") String page, @RequestParam(defaultValue = "9") String pagesize) {
 
         Page<Garment> garments= service.getAllGarments(Integer.parseInt(page),Integer.parseInt(pagesize));
         return garments.getContent();

@@ -36,11 +36,12 @@ public class Garment {
 
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(name = "garmentsizes", joinColumns = @JoinColumn(name = "garments_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sizes_id", referencedColumnName = "id"))
-    Set < Sizes > sizes = new HashSet< Sizes >();
+    //Set < Sizes > sizes = new HashSet< Sizes >();
+    private Collection<Sizes> sizes;
 
     Garment() {}
 
-    public Garment(String name, String type, int price, String colour, boolean premiumDelivery, String identity) {
+    public Garment(String name, String type, int price, String colour, boolean premiumDelivery, String identity, Collection<Sizes> sizes) {
 
         this.name = name;
         this.type = type;
@@ -48,6 +49,7 @@ public class Garment {
         this.colour = colour;
         this.premiumDelivery =  premiumDelivery;
         this.identity = identity;
+        this.sizes=sizes;
     }
 
     public Long getId() {
@@ -78,6 +80,17 @@ public class Garment {
         return this.identity;
     }
 
+    public Collection<Sizes> getSizes() {
+        return sizes;
+    }
+
+    public Set<Reviews> getRating() {
+        return rating;
+    }
+    public Set<Pictures> getPictures() {
+        return pictures;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -106,6 +119,16 @@ public class Garment {
         this.identity= identity;
     }
 
+    public void setSizes(Collection<Sizes> sizes) {
+        this.sizes = sizes;
+    }
+
+    public void setRating(Set<Reviews> rating) {
+        this.rating = rating;
+    }
+    public void setPictures(Set<Pictures> pictures) {
+        this.pictures = pictures;
+    }
     @Override
     public boolean equals(Object o) {
 

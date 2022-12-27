@@ -5,7 +5,12 @@ import zalandoLogo from "../../images/Zalando_logo.svg";
 import { ItemInfo } from "./ItemInfo/ItemInfo";
 import { amountArticles } from "../../utils/amountArticles";
 
-export const Body = ({ shoppingCart, filteredItems }) => {
+export const Body = ({
+  shoppingCart,
+  filteredItems,
+  moveForward,
+  movePrevious,
+}) => {
   const articlesQuantity = amountArticles(shoppingCart);
 
   return (
@@ -54,6 +59,14 @@ export const Body = ({ shoppingCart, filteredItems }) => {
             //(element, index) we use index when we don't have an id and then key={index}
           )}
         </div>
+      </div>
+      <div className="previous-next-page">
+        <button className="moving-pages" onClick={movePrevious}>
+          <i className="bi bi-chevron-double-left">Previous Page</i>
+        </button>
+        <button className="moving-pages" onClick={moveForward}>
+          Next Page<i className="bi bi-chevron-double-right"></i>
+        </button>
       </div>
     </div>
   );

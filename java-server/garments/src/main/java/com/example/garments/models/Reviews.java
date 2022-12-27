@@ -48,6 +48,8 @@ public class Reviews {
         return this.date;
     }
 
+    //public Garment getGarment() {  return garments;   }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -64,5 +66,6 @@ public class Reviews {
         this.date=date;
     }
 
+    //public void setGarment(Garment garments) {    this.garments = garments;    }
 
 }

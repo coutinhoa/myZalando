@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useSearchParams,
+} from "react-router-dom";
 import HomePage from "./HomePage/HomePage";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import "./App.css";
@@ -10,6 +15,8 @@ export const App = () => {
   const [items, setItems] = useState([]); //this is the original collection
   const [shoppingCart, setShoppingCart] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
+  const [counter, setCounter] = useState(0);
+  //const [searchParams, setSearchParams] = useSearchParams();
 
   //Insomnia example: http://127.0.0.1:8000/api/garments/1/reviews
 
@@ -17,19 +24,37 @@ export const App = () => {
   //fetch("http://localhost:3000/garments")
   //fastAPI it's running on http://127.0.0.1:8000/api/garments
   //alchemy is the orm that maps database stuff
-  const fetchClothes = () => {
+  const fetchClothes = (pageNumber = 0, pageSize = 10) => {
     //python: fetch("http://localhost:8000/api/garments")
-    fetch("http://localhost:8000/api/garments")
+    fetch(
+      //`http://localhost:5555/api/garments?page=${pageNumber}&pagesize=${pageSize}`
+      "http://localhost:5555/api/garments"
+    )
       .then((response) => response.json())
       .then((response) => {
         setItems(response);
         setFilteredItems(response); //the filtered items are also the initial items
       });
+    //.then(setSearchParams({ page: pageNumber, pagesize: pageSize }));
   };
 
   useEffect(() => {
     fetchClothes();
   }, []);
+
+  const movePreviousPage = () => {
+    console.log("you clicked previous");
+    const previousPage = counter - 1;
+    fetchClothes(previousPage);
+    setCounter(previousPage);
+  };
+
+  const moveNextPage = () => {
+    console.log("you clicked next");
+    const nextPage = counter + 1;
+    fetchClothes(nextPage);
+    setCounter(nextPage);
+  };
 
   /**
    * Adds an item to the shopping cart.
@@ -107,6 +132,8 @@ export const App = () => {
                 filterByIdentity={filterByIdentity}
                 handleSearchSubmit={handleSearchSubmit}
                 filteredItems={filteredItems}
+                moveForward={moveNextPage}
+                movePrevious={movePreviousPage}
               />
             }
           />

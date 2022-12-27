@@ -36,20 +36,25 @@ public class Sizes {
         return this.id;
     }
 
-
     public String getSizes() {
         return this.sizes;
     }
 
+    /*public Set<Garment> getGarments() {
+        return garments;
+    }*/
 
     public void setId(Long id) {
         this.id = id;
     }
 
-
     public void setSizes(String sizes) {
         this.sizes = sizes;
     }
+
+    /*public void setGarments(Set<Garment> garments) {
+        this.garments = garments;
+    }*/
 }
 
 

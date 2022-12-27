@@ -18,7 +18,7 @@ export const ItemPage = ({
   //if json: fetch(`http://localhost:3000/garments/${params.id}?_embed=reviews`)
   const fetchItem = useCallback(() => {
     //python: fetch(`http://localhost:8000/api/garments/${params.id}`)
-    fetch(`http://localhost:8000/api/garments/${params.id}`)
+    fetch(`http://localhost:5555/api/garments/${params.id}`)
       .then((response) => response.json())
       .then((response) => setItem(response));
   }, [params.id]);
