@@ -1,7 +1,6 @@
 package com.example.garments.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.example.garments.exceptions.GarmentNotFoundException;
 import com.example.garments.models.Garment;

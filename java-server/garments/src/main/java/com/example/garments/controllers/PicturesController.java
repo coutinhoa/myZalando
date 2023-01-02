@@ -2,7 +2,7 @@ package com.example.garments.controllers;
 
 
 import com.example.garments.models.Pictures;
-import com.example.garments.repository.PicturesRepository;
+import com.example.garments.services.PicturesService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -10,14 +10,18 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RestController
 class PicturesController {
-    private final PicturesRepository repository;
-    PicturesController(PicturesRepository repository) {
-        this.repository = repository;
+
+    private final PicturesService service;
+    PicturesController(PicturesService service) {
+        this.service = service;
     }
 
     @GetMapping("/garments/{garment_id}/pictures")
-    public Optional<Pictures> getPicturesById(@PathVariable Long garment_id) {
-        return repository.findById(garment_id);
+    Optional<Pictures> one(@PathVariable Integer garment_id) {
+
+       // return  service.getPicturesByGarmentId(garment_id);
+        return service.getPictures(garment_id);
     }
+
 
 }

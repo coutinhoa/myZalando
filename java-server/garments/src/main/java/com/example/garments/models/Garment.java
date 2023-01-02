@@ -31,11 +31,11 @@ public class Garment {
     private Set<Pictures> pictures;
 
     @OneToMany(mappedBy = "garments")
-    private Set<Reviews> rating;
+    private Set<Reviews> reviews;
 
 
     @ManyToMany (cascade = CascadeType.ALL)
-    @JoinTable(name = "garmentsizes", joinColumns = @JoinColumn(name = "garments_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sizes_id", referencedColumnName = "id"))
+    @JoinTable(name = "garmentsizes", joinColumns = @JoinColumn(name = "garment_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sizes_id", referencedColumnName = "id"))
     //Set < Sizes > sizes = new HashSet< Sizes >();
     private Collection<Sizes> sizes;
 
@@ -84,8 +84,8 @@ public class Garment {
         return sizes;
     }
 
-    public Set<Reviews> getRating() {
-        return rating;
+    public Set<Reviews> getReviews() {
+        return reviews;
     }
     public Set<Pictures> getPictures() {
         return pictures;
@@ -123,12 +123,13 @@ public class Garment {
         this.sizes = sizes;
     }
 
-    public void setRating(Set<Reviews> rating) {
-        this.rating = rating;
+    public void setReviews(Set<Reviews> reviews) {
+        this.reviews = reviews;
     }
     public void setPictures(Set<Pictures> pictures) {
         this.pictures = pictures;
     }
+
     @Override
     public boolean equals(Object o) {
 
