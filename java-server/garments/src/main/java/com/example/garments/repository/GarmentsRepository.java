@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface GarmentRepository extends JpaRepository <Garment, Long>{
+public interface GarmentsRepository extends JpaRepository <Garment, Long>{
     List<Garment> findByName(String name);
     //makes a list with the contacts that have this name
 

@@ -2,11 +2,9 @@ package com.example.garments.models;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -15,29 +13,29 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "sizes")
 
-public class Sizes {
+public class Size {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String sizes;
+    private String size;
 
 
     @ManyToMany(mappedBy = "sizes", cascade = { CascadeType.ALL })
     private Set<Garment> garments = new HashSet<Garment>();
 
-    Sizes() {
+    Size() {
     }
 
-    public Sizes(String sizes) {
-        this.sizes = sizes;
+    public Size(String sizes) {
+        this.size = size;
     }
 
     public Long getId() {
         return this.id;
     }
 
-    public String getSizes() {
-        return this.sizes;
+    public String getSize() {
+        return this.size;
     }
 
     /*public Set<Garment> getGarments() {
@@ -49,7 +47,7 @@ public class Sizes {
     }
 
     public void setSizes(String sizes) {
-        this.sizes = sizes;
+        this.size = size;
     }
 
     /*public void setGarments(Set<Garment> garments) {

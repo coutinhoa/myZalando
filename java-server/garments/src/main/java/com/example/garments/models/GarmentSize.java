@@ -2,24 +2,22 @@ package com.example.garments.models;
 
 import jakarta.persistence.*;
 
-import java.util.Collection;
-
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 
 @Entity
 @Table(name = "garmentsizes")
-public class GarmentSizes {
+public class GarmentSize {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private int quantity;
 
-    GarmentSizes() {
+    GarmentSize() {
     }
 
-    public GarmentSizes(int quantity) {
+    public GarmentSize(int quantity) {
 
         this.quantity = quantity;
 

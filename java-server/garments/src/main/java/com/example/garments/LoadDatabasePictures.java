@@ -1,6 +1,5 @@
 package com.example.garments;
 
-import com.example.garments.models.Pictures;
 import com.example.garments.repository.PicturesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

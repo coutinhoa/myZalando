@@ -1,6 +1,6 @@
 package com.example.garments;
 
-import com.example.garments.repository.GarmentRepository;
+import com.example.garments.repository.GarmentsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +13,7 @@ class LoadDatabaseGarment {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabaseGarment.class);
 
     @Bean
-    CommandLineRunner initDatabase(GarmentRepository repository) {
+    CommandLineRunner initDatabase(GarmentsRepository repository) {
 
         return args -> {
             /*log.info("Preloading " + repository.save(new Contact("Bilbo Baggins","11111", "b@email.com")));

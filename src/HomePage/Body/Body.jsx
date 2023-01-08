@@ -60,14 +60,6 @@ export const Body = ({
           )}
         </div>
       </div>
-      <div className="previous-next-page">
-        <button className="moving-pages" onClick={movePrevious}>
-          <i className="bi bi-chevron-double-left">Previous Page</i>
-        </button>
-        <button className="moving-pages" onClick={moveForward}>
-          Next Page<i className="bi bi-chevron-double-right"></i>
-        </button>
-      </div>
     </div>
   );
 };

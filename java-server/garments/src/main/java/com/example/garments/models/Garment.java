@@ -3,7 +3,6 @@ package com.example.garments.models;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -27,21 +26,21 @@ public class Garment {
     private String identity;
 
 
-    @OneToMany(mappedBy = "garments")
-    private Set<Pictures> pictures;
+    @OneToMany(mappedBy = "garment")
+    private Set<Picture> pictures;
 
-    @OneToMany(mappedBy = "garments")
-    private Set<Reviews> reviews;
+    @OneToMany(mappedBy = "garment")
+    private Set<Review> reviews;
 
 
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(name = "garmentsizes", joinColumns = @JoinColumn(name = "garment_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sizes_id", referencedColumnName = "id"))
     //Set < Sizes > sizes = new HashSet< Sizes >();
-    private Collection<Sizes> sizes;
+    private Collection<Size> sizes;
 
     Garment() {}
 
-    public Garment(String name, String type, int price, String colour, boolean premiumDelivery, String identity, Collection<Sizes> sizes) {
+    public Garment(String name, String type, int price, String colour, boolean premiumDelivery, String identity, Collection<Size> sizes) {
 
         this.name = name;
         this.type = type;
@@ -80,14 +79,14 @@ public class Garment {
         return this.identity;
     }
 
-    public Collection<Sizes> getSizes() {
+    public Collection<Size> getSizes() {
         return sizes;
     }
 
-    public Set<Reviews> getReviews() {
+    public Set<Review> getReviews() {
         return reviews;
     }
-    public Set<Pictures> getPictures() {
+    public Set<Picture> getPictures() {
         return pictures;
     }
 
@@ -119,14 +118,14 @@ public class Garment {
         this.identity= identity;
     }
 
-    public void setSizes(Collection<Sizes> sizes) {
+    public void setSizes(Collection<Size> sizes) {
         this.sizes = sizes;
     }
 
-    public void setReviews(Set<Reviews> reviews) {
+    public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
     }
-    public void setPictures(Set<Pictures> pictures) {
+    public void setPictures(Set<Picture> pictures) {
         this.pictures = pictures;
     }
 

@@ -1,7 +1,7 @@
 package com.example.garments.controllers;
 
 
-import com.example.garments.models.Pictures;
+import com.example.garments.models.Picture;
 import com.example.garments.services.PicturesService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ class PicturesController {
     }
 
     @GetMapping("/garments/{garment_id}/pictures")
-    Optional<Pictures> one(@PathVariable Integer garment_id) {
+    Optional<Picture> getPicture(@PathVariable Integer garment_id) {
 
        // return  service.getPicturesByGarmentId(garment_id);
         return service.getPictures(garment_id);

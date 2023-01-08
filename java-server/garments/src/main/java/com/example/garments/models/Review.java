@@ -1,14 +1,18 @@
 package com.example.garments.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
-import java.util.Collection;
+
+import java.util.Optional;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "reviews")
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -20,12 +24,14 @@ public class Reviews {
 
     @ManyToOne
     @JoinColumn(name="garment_id", nullable=false)
-    private Garment garments;
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private Garment garment;
 
-    Reviews() {
+    Review() {
     }
 
-    public Reviews(int rating, String description, String date) {
+    public Review(int rating, String description, String date) {
         this.rating = rating;
         this.description = description;
         this.date = date;
@@ -48,7 +54,7 @@ public class Reviews {
         return this.date;
     }
 
-    //public Garment getGarment() {  return garments;   }
+    public Garment getGarment() {  return garment;   }
 
     public void setId(Long id) {
         this.id = id;
@@ -66,6 +72,6 @@ public class Reviews {
         this.date=date;
     }
 
-    //public void setGarment(Garment garments) {    this.garments = garments;    }
+   public void setGarment(Garment garment) {    this.garment = garment;    }
 
 }

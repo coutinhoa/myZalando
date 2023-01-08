@@ -41,6 +41,7 @@ export const Rating = ({
     return count;
   }
   //console.log(occurencesArray(item));
+  //console.log(item.sizes);
 
   function value(element) {
     let result = 0;

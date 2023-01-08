@@ -1,10 +1,9 @@
 package com.example.garments.controllers;
 
-import com.example.garments.models.GarmentSizes;
+import com.example.garments.models.GarmentSize;
 import com.example.garments.repository.GarmentSizesRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +18,7 @@ class GarmentSizesController {
     }
 
     @GetMapping("/garments/{garment_id}/garmentsizes")
-    List<GarmentSizes> all() {
+    List<GarmentSize> all() {
         return repository.findAll();
     }
 }

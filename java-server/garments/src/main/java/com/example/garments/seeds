@@ -1318,10 +1318,13 @@ SELECT * FROM pictures
 
 
 
-INSERT INTO sizes (sizes)
+INSERT INTO sizes (size)
 VALUES ('XS'), ('S'), ('M'), ('L'), ('XL')
 
 SELECT * FROM sizes
+//UPDATE sizes
+  SET size = 'XS'
+  WHERE id=1 ;
 
 
 

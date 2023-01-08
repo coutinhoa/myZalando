@@ -1,7 +1,7 @@
 package com.example.garments.repository;
 
-import com.example.garments.models.GarmentSizes;
+import com.example.garments.models.GarmentSize;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface GarmentSizesRepository extends JpaRepository<GarmentSizes, Long> {
+public interface GarmentSizesRepository extends JpaRepository<GarmentSize, Long> {
 }

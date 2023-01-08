@@ -61,9 +61,17 @@ const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
         filteredItems={filteredItems}
         shoppingCart={shoppingCart}
         filterByIdentity={filterByIdentity}
-        moveForward={moveNextPage}
-        movePrevious={movePreviousPage}
       />
+      <div className="previous-next-page">
+        {
+          <button className="moving-pages" onClick={movePreviousPage}>
+            <i className="bi bi-chevron-double-left">Previous Page</i>
+          </button>
+        }
+        <button className="moving-pages" onClick={moveNextPage}>
+          Next Page<i className="bi bi-chevron-double-right"></i>
+        </button>
+      </div>
       <footer className="footer-container">
         <ul className="footer">
           <li>Datenschutz</li>

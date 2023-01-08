@@ -73,6 +73,7 @@
 .border-select-size {
   border-style: solid;
   border-color: black;
+  color: black;
 }
 
 .select-size-container {

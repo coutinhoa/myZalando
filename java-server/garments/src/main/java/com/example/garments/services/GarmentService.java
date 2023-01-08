@@ -2,7 +2,7 @@ package com.example.garments.services;
 
 
 import com.example.garments.models.Garment;
-import com.example.garments.repository.GarmentRepository;
+import com.example.garments.repository.GarmentsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,8 +13,8 @@ import java.util.Optional;
 @Service
 public class GarmentService {
 
-    private final GarmentRepository repository;
-    GarmentService(GarmentRepository repository) {
+    private final GarmentsRepository repository;
+    GarmentService(GarmentsRepository repository) {
         this.repository = repository;
     }
 
@@ -32,6 +32,7 @@ public class GarmentService {
         return repository.save(garment);
     }
 
+    //TODO: trow exception when garment does not exist
     public Optional<Garment> getGarment(Long id){
         return repository.findById(id);
     }

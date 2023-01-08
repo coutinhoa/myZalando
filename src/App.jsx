@@ -91,17 +91,6 @@ export const App = () => {
             }
           />
           <Route
-            path="/"
-            element={
-              <HomePage
-                shoppingCart={shoppingCart}
-                filterByIdentity={filterByIdentity}
-                handleSearchSubmit={handleSearchSubmit}
-                filteredItems={filteredItems}
-              />
-            }
-          />
-          <Route
             path="/shopping-cart"
             element={
               <ShoppingCart

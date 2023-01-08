@@ -1,5 +1,5 @@
 package com.example.garments.services;
-import com.example.garments.models.Pictures;
+import com.example.garments.models.Picture;
 import com.example.garments.repository.PicturesRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class PicturesService {
         return repository.findByGarmentId(garment_id);
     }*/
 
-    public Optional<Pictures> getPictures(Integer garment_id){
-        return repository.findByGarments(garment_id);
+    public Optional<Picture> getPictures(Integer garment_id){
+        return repository.findByGarment(garment_id);
     }
 }
