@@ -37,7 +37,7 @@ export const Header = ({
   return (
     <div>
       <div className="header-two">
-        <p>
+        <div>
           <button
             className="identity-buttons"
             onClick={() => filterByIdentity("Woman")}
@@ -56,7 +56,7 @@ export const Header = ({
           >
             KINDER
           </button>
-        </p>
+        </div>
         <Link
           className="back-home"
           to={`/`}

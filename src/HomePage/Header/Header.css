@@ -5,6 +5,7 @@
   height: 50px;
   background-color: white;
   padding-bottom: 20px;
+  margin-top: 15px;
 }
 
 .identity-buttons {
@@ -13,10 +14,6 @@
   border-color: white;
   margin-left: 20px;
   box-shadow: none;
-}
-
-.back-home {
-  margin-top: 15px;
 }
 
 .logo {

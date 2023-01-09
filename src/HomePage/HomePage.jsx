@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import zalando from "../images/Zalando.png";
 import { useSearchParams } from "react-router-dom";
 
+const PAGE_SIZE = 9; //constants can be outside the component
+
 const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
   const [items, setItems] = useState([]); //this is the original collection
-  const [counter, setCounter] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const [searchParams, setSearchParams] = useSearchParams();
   const [filteredItems, setFilteredItems] = useState([]); //the filteredItems is the collection the undelying componenst are gonna see
 
@@ -18,7 +20,7 @@ const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
   //fetch("http://localhost:3000/garments")
   //fastAPI it's running on http://127.0.0.1:8000/api/garments
   //alchemy is the orm that maps database stuff
-  const fetchClothes = (pageNumber = 0, pageSize = 9) => {
+  const fetchClothes = (pageNumber = 0, pageSize = PAGE_SIZE) => {
     //python: fetch("http://localhost:8000/api/garments")
     fetch(
       `http://localhost:5555/api/garments?page=${pageNumber}&pagesize=${pageSize}`
@@ -38,16 +40,16 @@ const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
 
   const movePreviousPage = () => {
     console.log("you clicked previous");
-    const previousPage = counter - 1;
+    const previousPage = currentPage - 1;
     fetchClothes(previousPage);
-    setCounter(previousPage);
+    setCurrentPage(previousPage);
   };
 
   const moveNextPage = () => {
     console.log("you clicked next");
-    const nextPage = counter + 1;
+    const nextPage = currentPage + 1;
     fetchClothes(nextPage);
-    setCounter(nextPage);
+    setCurrentPage(nextPage);
   };
 
   return (
@@ -63,14 +65,20 @@ const HomePage = ({ shoppingCart, filterByIdentity, handleSearchSubmit }) => {
         filterByIdentity={filterByIdentity}
       />
       <div className="previous-next-page">
-        {
-          <button className="moving-pages" onClick={movePreviousPage}>
-            <i className="bi bi-chevron-double-left">Previous Page</i>
-          </button>
-        }
-        <button className="moving-pages" onClick={moveNextPage}>
-          Next Page<i className="bi bi-chevron-double-right"></i>
-        </button>
+        <div className="move-previous-page">
+          {currentPage > 0 && (
+            <button className="moving-previous-page" onClick={movePreviousPage}>
+              <i className="bi bi-chevron-double-left">Previous Page</i>
+            </button>
+          )}
+        </div>
+        <div className="move-next-page">
+          {filteredItems.length === PAGE_SIZE && (
+            <button className="moving-next-page" onClick={moveNextPage}>
+              Next Page<i className="bi bi-chevron-double-right"></i>
+            </button>
+          )}
+        </div>
       </div>
       <footer className="footer-container">
         <ul className="footer">
