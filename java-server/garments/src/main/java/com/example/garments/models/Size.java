@@ -19,9 +19,9 @@ public class Size {
     private Long id;
     private String size;
 
-
-    @ManyToMany(mappedBy = "sizes", cascade = { CascadeType.ALL })
-    private Set<Garment> garments = new HashSet<Garment>();
+    @OneToMany(mappedBy = "size")
+    @JsonIgnore
+    private List<GarmentSize> garmentSizes;
 
     Size() {
     }

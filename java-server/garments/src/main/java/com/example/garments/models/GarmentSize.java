@@ -14,6 +14,17 @@ public class GarmentSize {
     private Long id;
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "garment_id", nullable = false, referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private WarehouseProduct garment;
+
+    @ManyToOne
+    @JoinColumn(name = "size_id", nullable = false, referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Size size;
+
     GarmentSize() {
     }
 

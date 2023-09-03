@@ -32,11 +32,8 @@ public class Garment {
     @OneToMany(mappedBy = "garment")
     private Set<Review> reviews;
 
-
-    @ManyToMany (cascade = CascadeType.ALL)
-    @JoinTable(name = "garmentsizes", joinColumns = @JoinColumn(name = "garment_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "sizes_id", referencedColumnName = "id"))
-    //Set < Sizes > sizes = new HashSet< Sizes >();
-    private Collection<Size> sizes;
+    @OneToMany(mappedBy = "garment")
+    private List<GarmentSize> garmentSizes;
 
     Garment() {}
 
